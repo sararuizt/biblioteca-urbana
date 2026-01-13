@@ -1,0 +1,166 @@
+/* ======================================================
+   BIBLIOTECA URBANA - ESTILOS DEFINITIVOS (TEMA DARK)
+   ====================================================== */
+
+/* 1. FONDO Y TIPOGRAFÍA GLOBAL */
+body {
+    background-color: #121212 !important; /* Negro Fondo Spotify */
+    color: #b3b3b3 !important; /* Gris texto base */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* 2. BARRA DE MENÚ (NAVBAR) */
+.navbar {
+    background-color: #000000 !important; /* Negro puro */
+    border-bottom: none !important;
+}
+
+/* Título del menú (Arriba Izquierda) */
+.navbar-brand, a.navbar-brand, .site-title {
+    color: #ffffff !important; /* BLANCO PURO PARA QUE SE VEA */
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+/* Enlaces del menú */
+.nav-link {
+    color: #b3b3b3 !important;
+    font-weight: 600;
+}
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* 3. TARJETAS DE ÁLBUMES (ESTILO SPOTIFY MEJORADO) */
+.card {
+    background-color: #181818 !important; /* Gris Tarjeta (destaca sobre el fondo #121212) */
+    border: none !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+    height: 100%; /* Igualar alturas */
+    overflow: hidden;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+.card:hover {
+    background-color: #282828 !important; /* Se ilumina un poco */
+    transform: translateY(-8px); /* Flota hacia arriba */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* Imagen cuadrada */
+.card-img-top {
+    width: 100%;
+    aspect-ratio: 1/1; /* Cuadrado perfecto */
+    object-fit: cover;
+    border-radius: 0 !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5); /* Sombra bajo la foto */
+    margin-bottom: 10px;
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+    padding: 16px !important;
+    background-color: transparent !important;
+}
+
+/* Título del Álbum */
+.card-title, .card-body h3, .card-body h4, .card-body a {
+    color: #ffffff !important; /* Blanco Brillante */
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Nombre del Artista */
+.card-text, .card-body p {
+    color: #a7a7a7 !important; /* Gris claro */
+    font-size: 0.9rem !important;
+    margin-bottom: 10px;
+}
+
+/* Botones de Género (Tags) */
+.card-body .btn, .card-body .badge {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    font-size: 0.7rem !important;
+    font-weight: 700;
+    border: none !important;
+    text-transform: uppercase;
+}
+.card-body .btn:hover {
+    background-color: #1DB954 !important; /* Verde Spotify al tocar */
+    color: #000 !important;
+}
+
+/* 4. TÍTULOS DE SECCIONES (H1, H2...) */
+h1, h2, h3 {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/* 5. ARREGLOS ESPECÍFICOS DE LA LÍNEA TEMPORAL (TIMELINE) */
+/* Barra de scroll personalizada */
+.horizontal-scroll-container::-webkit-scrollbar { height: 10px; }
+.horizontal-scroll-container::-webkit-scrollbar-track { background: #121212; }
+.horizontal-scroll-container::-webkit-scrollbar-thumb { background-color: #555; border-radius: 5px; }
+.horizontal-scroll-container::-webkit-scrollbar-thumb:hover { background-color: #1DB954; }
+
+/* Enlaces generales */
+a { color: #ffffff; text-decoration: none; }
+a:hover { color: #1DB954; }
+
+/* ======================================================
+   6. ARREGLO FINAL: EVITAR CHOQUE DE VINILOS
+   ====================================================== */
+
+/* Aseguramos que la columna tenga posición relativa */
+/* ======================================================
+   ARREGLO: Z-INDEX PARA QUE EL VINILO NO SE CORTE
+   ====================================================== */
+
+/* ======================================================
+   6. ARREGLO FINAL: TAMAÑO, ESPACIO Y Z-INDEX
+   ====================================================== */
+
+/* 1. EL CONTENEDOR DE LA COLUMNA */
+.album-card-col {
+    position: relative;
+    transition: z-index 0s;
+    
+    /* TRUCO: Añadimos mucho relleno a los lados.
+       Esto empuja la tarjeta hacia dentro y crea un "pasillo" 
+       para que el vinilo pueda salir sin chocar. */
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+/* 2. EL Z-INDEX MÁGICO */
+/* Al pasar el ratón, esta columna se pone POR ENCIMA de sus vecinas */
+.album-card-col:hover {
+    z-index: 1000 !important; 
+}
+
+/* 3. HACER LA TARJETA MÁS PEQUEÑA */
+.spotify-card {
+    /* Forzamos un ancho máximo. 
+       Aunque la columna sea grande, la tarjeta no pasará de 280px. */
+    max-width: 330px !important; 
+    
+    /* Centramos la tarjeta en el hueco que sobra */
+    margin: 0 auto !important; 
+    
+    /* Aseguramos que la altura sea automática para no deformarse */
+    height: auto !important;
+}
+
+/* Ajuste del contenedor de imagen para que respete el nuevo tamaño */
+.album-wrapper {
+    max-width: 100% !important;
+    aspect-ratio: 1 / 1;
+}

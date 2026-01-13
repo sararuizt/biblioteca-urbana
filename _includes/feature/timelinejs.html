@@ -1,0 +1,282 @@
+{% comment %}
+    DISEÑO: Timeline HORIZONTAL + MODAL SIMPLIFICADO (Solo Valoración y Plays)
+{% endcomment %}
+
+<style>
+    /* =========================================
+       1. SCROLL HORIZONTAL
+       ========================================= */
+    .horizontal-scroll-container {
+        width: 100%; overflow-x: auto; overflow-y: hidden;
+        padding: 80px 0; position: relative;
+        scrollbar-width: thin; scrollbar-color: #1DB954 #121212;
+        cursor: grab; user-select: none; -webkit-overflow-scrolling: touch; 
+    }
+    .horizontal-scroll-container.active { cursor: grabbing; }
+
+    .h-wrapper {
+        display: flex; align-items: center; width: max-content; 
+        position: relative; padding: 0 50px; min-height: 400px; pointer-events: none; 
+    }
+
+    .h-line-axis {
+        position: absolute; top: 50%; left: 0; right: 0;
+        height: 4px; background-color: #1DB954; border-radius: 2px; z-index: 0;
+    }
+
+    .h-item {
+        position: relative; width: 180px; flex-shrink: 0;
+        margin: 0 15px; z-index: 1; display: flex; flex-direction: column; align-items: center;
+        pointer-events: auto; cursor: pointer;
+    }
+
+    .h-item:nth-child(odd) { transform: translateY(-70%); }
+    .h-item:nth-child(even) { transform: translateY(72%); }
+
+    .h-card {
+        background-color: #212529; border-radius: 8px; overflow: hidden; width: 100%;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.5); transition: transform 0.2s;
+        border: 1px solid #333; -webkit-user-drag: none; 
+    }
+
+    .h-card:hover {
+        transform: scale(1.05); border-color: #1DB954;
+        box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+    }
+
+    .h-img {
+        width: 100%; height: 120px; object-fit: cover;
+        border-bottom: 1px solid #333; pointer-events: none;
+    }
+
+    .h-info { padding: 10px; text-align: center; }
+    .h-date { color: #1DB954; font-weight: 800; font-size: 1.2rem; display: block; }
+    .h-info h3 { font-size: 0.9rem; margin: 0; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .h-info h4 { font-size: 0.75rem; color: #b3b3b3; margin: 2px 0 0 0; }
+
+    .h-dot {
+        position: absolute; width: 16px; height: 16px;
+        background: #121212; border: 3px solid #1DB954;
+        border-radius: 50%; left: 50%; transform: translateX(-50%); z-index: 2;
+    }
+    .h-connector {
+        position: absolute; width: 2px; height: 40px;
+        background: #1DB954; left: 50%; transform: translateX(-50%); z-index: 0;
+    }
+    .h-item:nth-child(odd) .h-dot { bottom: -50px; }
+    .h-item:nth-child(even) .h-dot { top: -50px; }
+    .h-item:nth-child(odd) .h-connector { bottom: -42px; }
+    .h-item:nth-child(even) .h-connector { top: -42px; }
+
+    /* =========================================
+       2. ESTILO MODAL
+       ========================================= */
+    .timeline-modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
+        z-index: 10000; display: none; justify-content: center; align-items: center;
+        opacity: 0; transition: opacity 0.3s ease;
+    }
+    .timeline-modal-overlay.open { display: flex; opacity: 1; }
+
+    .timeline-modal {
+        background-color: #121212; border-radius: 10px;
+        width: 600px; max-width: 90%; max-height: 90vh;
+        overflow-y: auto; position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        display: flex; flex-direction: column; color: #fff; padding: 30px;
+        border: 1px solid #333;
+    }
+
+    .modal-close {
+        position: absolute; top: 15px; right: 15px;
+        background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px;
+        border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center;
+        font-size: 14px; transition: 0.2s; z-index: 10;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.3); }
+
+    /* CABECERA */
+    .modal-top-section { display: flex; gap: 25px; align-items: flex-end; margin-bottom: 30px; }
+    .modal-cover-img { width: 160px; height: 160px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.7); border-radius: 6px; flex-shrink: 0; }
+    .modal-header-info { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5px; }
+    .modal-header-info h2 { font-size: 2.5rem; font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1px; color: #fff; }
+    .modal-header-info h3 { font-size: 1.2rem; color: #fff; margin: 5px 0 5px 0; font-weight: 700; }
+    .modal-meta-line { font-size: 0.9rem; color: #b3b3b3; font-weight: 400; }
+
+    /* DESCRIPCIÓN */
+    .modal-desc-section { margin-bottom: 30px; }
+    .modal-label { display: block; color: #1DB954; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .modal-desc-text { font-size: 1rem; line-height: 1.5; color: #d1d1d1; margin: 0; }
+
+    /* GRID DE DATOS SIMPLIFICADO */
+    .modal-data-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 Columnas */
+        gap: 20px;
+        border-top: 1px solid #2a2a2a;
+        padding-top: 25px;
+    }
+
+    .data-item { display: flex; flex-direction: column; }
+    
+    .data-value { font-weight: 700; font-size: 1.1rem; color: #fff; margin-top: 4px; }
+    .data-value.big-number { font-size: 1.4rem; letter-spacing: -0.5px; }
+
+    @media (max-width: 600px) {
+        .modal-top-section { flex-direction: column; align-items: center; text-align: center; }
+        .modal-header-info { align-items: center; }
+        .modal-data-grid { grid-template-columns: 1fr; text-align: center; }
+    }
+</style>
+
+<div class="horizontal-scroll-container" id="scrollBox">
+    <div class="h-wrapper">
+        <div class="h-line-axis"></div>
+        {% assign items = site.data[site.metadata] | where_exp: 'item','item.objectid' | sort: 'date' %}
+        {% for item in items %}
+        <div class="h-item" onclick="openTimelineModal('{{ item.objectid }}')">
+            <div class="h-card">
+                {% if item.filename contains '/' %}
+                    <img src="{{ item.filename }}" class="h-img" alt="{{ item.title }}">
+                {% else %}
+                    <img src="{{ item.filename | prepend: '/objects/' | relative_url }}" class="h-img" alt="{{ item.title }}">
+                {% endif %}
+                <div class="h-info">
+                    <span class="h-date">{{ item.date }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <h4>{{ item.creator }}</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="timeline-modal-overlay" id="tModal" onclick="closeTModal(event)">
+    <div class="timeline-modal" onclick="event.stopPropagation()">
+        
+        <button class="modal-close" onclick="closeTModalDirect()">✕</button>
+        
+        <div class="modal-top-section">
+            <img id="tm-img" class="modal-cover-img" src="">
+            <div class="modal-header-info">
+                <h2 id="tm-title">TÍTULO</h2>
+                <h3 id="tm-artist">Artista</h3>
+                <span class="modal-meta-line"><span id="tm-year">2023</span> • <span id="tm-tracks">12</span> canciones</span>
+            </div>
+        </div>
+
+        <div class="modal-desc-section">
+            <span class="modal-label">DESCRIPCIÓN</span>
+            <p id="tm-desc" class="modal-desc-text">...</p>
+        </div>
+
+        <div class="modal-data-grid">
+            
+            <div class="data-item">
+                <span class="modal-label">VALORACIÓN</span>
+                <span id="tm-rating-container" class="data-value" style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px;">
+                    ★★★★★
+                </span>
+            </div>
+
+            <div class="data-item">
+                <span class="modal-label">REPRODUCCIONES</span>
+                <span class="data-value big-number" id="tm-plays">0</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- 1. BASE DE DATOS JSON ---
+    // Incluye lógica de rating y plays desde CSV
+    const tAlbumsDB = {
+        {% for item in site.data[site.metadata] %}
+        "{{ item.objectid }}": {
+            "title": {{ item.title | jsonify }},
+            "creator": {{ item.creator | jsonify }},
+            "date": {{ item.date | jsonify }},
+            "filename": {{ item.filename | jsonify }},
+            "description": {{ item.description | jsonify }},
+            "track_count": {{ item.track_count | jsonify }},
+            "plays": {{ item.plays | default: 0 | jsonify }}, 
+            "rating": {{ item.rating | default: 5 | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    };
+
+    // --- 2. LÓGICA DEL MODAL ---
+    const tModal = document.getElementById('tModal');
+
+    // Función para generar estrellas
+    function generateStars(rating) {
+        const score = parseInt(rating) || 0;
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+            if (i < score) {
+                starsHTML += '<span style="color: #FFD700;">★</span>';
+            } else {
+                starsHTML += '<span style="color: #444;">★</span>';
+            }
+        }
+        return starsHTML;
+    }
+
+    function openTimelineModal(id) {
+        const item = tAlbumsDB[id];
+        if (!item) return;
+
+        // Textos Básicos
+        document.getElementById('tm-title').innerText = item.title;
+        document.getElementById('tm-artist').innerText = item.creator;
+        document.getElementById('tm-year').innerText = item.date;
+        document.getElementById('tm-tracks').innerText = item.track_count || "-";
+        document.getElementById('tm-desc').innerText = item.description || "Sin descripción disponible.";
+
+        // --- SOLO REPRODUCCIONES Y VALORACIÓN ---
+
+        // 1. Reproducciones (Formato 1.234.567)
+        // Reproducciones (Fake number generator para demo)
+        let plays = Math.floor(Math.random() * (200000000 - 1000000) + 1000000);
+        document.getElementById('tm-plays').innerText = new Intl.NumberFormat('es-ES').format(plays);
+
+        // 2. Valoración (Estrellas generadas dinámicamente)
+        const ratingContainer = document.getElementById('tm-rating-container');
+        ratingContainer.innerHTML = generateStars(item.rating);
+
+        // Imagen
+        let imgSrc = item.filename;
+        if (imgSrc && !imgSrc.includes('/')) imgSrc = "{{ '/objects/' | relative_url }}" + imgSrc;
+        document.getElementById('tm-img').src = imgSrc;
+
+        // Abrir
+        tModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTModal(e) { if (e.target === tModal) closeTModalDirect(); }
+    function closeTModalDirect() { tModal.classList.remove('open'); document.body.style.overflow = ''; }
+
+    // --- 3. SCROLL DRAG & DROP ---
+    const slider = document.getElementById('scrollBox');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true; slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return; e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk;
+    });
+</script>

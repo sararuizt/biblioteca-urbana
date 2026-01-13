@@ -1,50 +1,21 @@
+---
+# find and count unique subjects used in the metadata
+---
+{%- if site.data.theme.subjects-fields -%}
+{%- assign cloud-fields = site.data.theme.subjects-fields | split: ";" -%}
+{% comment %} Capture all cloud terms {% endcomment %} 
+{%- assign raw-terms = "" -%}
+{%- for c in cloud-fields -%}
+{% assign new = site.data[site.metadata] | map: c | compact | join: ";" %}
+{% assign raw-terms = raw-terms | append: ";" | append: new %}
+{%- endfor -%}
+{%- assign raw-terms = raw-terms | downcase | split: ";" -%}
+{% comment %} Clean up raw terms {% endcomment %} 
+{%- capture terms -%}{%- for t in raw-terms -%}{%- if t != "" and t != " " -%}{{ t | strip }};{%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- assign terms = terms | split: ";" | sort -%}
+{%- assign uniqueTerms = terms | uniq | sort -%}
 { "subjects": [
-    { "subject": "alt. urbano", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#alt.%20urbano" },
-    { "subject": "bad bunny", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#bad%20bunny" },
-    { "subject": "boom bap", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#boom%20bap" },
-    { "subject": "c mari", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#c%20mari" },
-    { "subject": "cruz cafuné", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#cruz%20cafun%C3%A9" },
-    { "subject": "d.valentino", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#d.valentino" },
-    { "subject": "dancehall", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#dancehall" },
-    { "subject": "delaossa", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#delaossa" },
-    { "subject": "dellafuente", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#dellafuente" },
-    { "subject": "drill", "count": 2, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#drill" },
-    { "subject": "duki", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#duki" },
-    { "subject": "eladio carrión", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#eladio%20carri%C3%B3n" },
-    { "subject": "flamenco urbano", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#flamenco%20urbano" },
-    { "subject": "fusión", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#fusi%C3%B3n" },
-    { "subject": "hip-hop", "count": 4, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#hip-hop" },
-    { "subject": "indie pop", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#indie%20pop" },
-    { "subject": "joji", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#joji" },
-    { "subject": "kaydy cain", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#kaydy%20cain" },
-    { "subject": "kidd keo", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#kidd%20keo" },
-    { "subject": "l'haine", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#l'haine" },
-    { "subject": "maluma", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#maluma" },
-    { "subject": "melendi", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#melendi" },
-    { "subject": "mora", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#mora" },
-    { "subject": "mvrk", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#mvrk" },
-    { "subject": "myke towers", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#myke%20towers" },
-    { "subject": "natalia lacunza", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#natalia%20lacunza" },
-    { "subject": "pop", "count": 3, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#pop" },
-    { "subject": "pop latino", "count": 2, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#pop%20latino" },
-    { "subject": "pop urbano", "count": 4, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#pop%20urbano" },
-    { "subject": "pop-rock español", "count": 2, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#pop-rock%20espa%C3%B1ol" },
-    { "subject": "r&b", "count": 3, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b" },
-    { "subject": "r&b alternativo", "count": 2, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b%20alternativo" },
-    { "subject": "r&b urbano", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b%20urbano" },
-    { "subject": "rap", "count": 5, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#rap" },
-    { "subject": "rap español", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#rap%20espa%C3%B1ol" },
-    { "subject": "rauw alejandro", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#rauw%20alejandro" },
-    { "subject": "reggaetón", "count": 7, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#reggaet%C3%B3n" },
-    { "subject": "rels b", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#rels%20b" },
-    { "subject": "rosalia", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#rosalia" },
-    { "subject": "sen senra", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#sen%20senra" },
-    { "subject": "synthwave", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#synthwave" },
-    { "subject": "trap", "count": 7, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#trap" },
-    { "subject": "trap argentino", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#trap%20argentino" },
-    { "subject": "trap latino", "count": 2, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#trap%20latino" },
-    { "subject": "trueno", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#trueno" },
-    { "subject": "urbano", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#urbano" },
-    { "subject": "young cister", "count": 1, "link": "https://sararuizt.github.io/biblioteca-urbana/browse.html#young%20cister" }
+    {% for u in uniqueTerms %}{% assign count = terms | where_exp: 'item', 'item == u' | size %}{ "subject": {{ u | jsonify }}, "count": {{ count }}, "link": {{ u | url_param_escape | prepend: '/browse.html#' | absolute_url | jsonify }} }{% unless forloop.last %},
+    {% endunless %}{% endfor %}
 ]
-}
+}{%- endif -%}

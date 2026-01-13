@@ -1,0 +1,9 @@
+field,display_name,type,browse_link,browse_group
+title,Álbum,string,true,false
+creator,Artista,string,true,true
+subject,Género,string,true,true
+date,Año,string,true,false
+awards,Logros y Premios,string,true,true
+format,Formato,string,true,true
+track_count,Canciones,string,false,false
+duration,Duración,string,false,false

@@ -1,48 +1,20 @@
+---
+# find all unique locations used in the metadata
+---
+{%- if site.data.theme.locations-fields -%}
+{%- assign cloud-fields = site.data.theme.subjects-fields | split: ";" -%}
+{% comment %} Capture all cloud terms {% endcomment %} 
+{%- assign raw-terms = "" -%}
+{%- for c in cloud-fields -%}
+{% assign new = site.data[site.metadata] | map: c | compact | join: ";" %}
+{% assign raw-terms = raw-terms | append: ";" | append: new %}
+{%- endfor -%}
+{%- assign raw-terms = raw-terms | downcase | split: ";" -%}
+{% comment %} Clean up raw terms {% endcomment %} 
+{%- capture terms -%}{%- for t in raw-terms -%}{%- if t != "" and t != " " -%}{{ t | strip }};{%- endif -%}{%- endfor -%}{%- endcapture -%}
+{%- assign terms = terms | split: ";" | sort -%}
+{%- assign uniqueTerms = terms | uniq | sort -%}
 location,count,link
-"alt. urbano",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#alt.%20urbano"
-"bad bunny",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#bad%20bunny"
-"boom bap",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#boom%20bap"
-"c mari",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#c%20mari"
-"cruz cafuné",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#cruz%20cafun%C3%A9"
-"d.valentino",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#d.valentino"
-"dancehall",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#dancehall"
-"delaossa",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#delaossa"
-"dellafuente",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#dellafuente"
-"drill",2,"https://sararuizt.github.io/biblioteca-urbana/browse.html#drill"
-"duki",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#duki"
-"eladio carrión",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#eladio%20carri%C3%B3n"
-"flamenco urbano",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#flamenco%20urbano"
-"fusión",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#fusi%C3%B3n"
-"hip-hop",4,"https://sararuizt.github.io/biblioteca-urbana/browse.html#hip-hop"
-"indie pop",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#indie%20pop"
-"joji",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#joji"
-"kaydy cain",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#kaydy%20cain"
-"kidd keo",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#kidd%20keo"
-"l'haine",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#l'haine"
-"maluma",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#maluma"
-"melendi",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#melendi"
-"mora",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#mora"
-"mvrk",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#mvrk"
-"myke towers",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#myke%20towers"
-"natalia lacunza",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#natalia%20lacunza"
-"pop",3,"https://sararuizt.github.io/biblioteca-urbana/browse.html#pop"
-"pop latino",2,"https://sararuizt.github.io/biblioteca-urbana/browse.html#pop%20latino"
-"pop urbano",4,"https://sararuizt.github.io/biblioteca-urbana/browse.html#pop%20urbano"
-"pop-rock español",2,"https://sararuizt.github.io/biblioteca-urbana/browse.html#pop-rock%20espa%C3%B1ol"
-"r&b",3,"https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b"
-"r&b alternativo",2,"https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b%20alternativo"
-"r&b urbano",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#r&b%20urbano"
-"rap",5,"https://sararuizt.github.io/biblioteca-urbana/browse.html#rap"
-"rap español",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#rap%20espa%C3%B1ol"
-"rauw alejandro",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#rauw%20alejandro"
-"reggaetón",7,"https://sararuizt.github.io/biblioteca-urbana/browse.html#reggaet%C3%B3n"
-"rels b",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#rels%20b"
-"rosalia",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#rosalia"
-"sen senra",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#sen%20senra"
-"synthwave",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#synthwave"
-"trap",7,"https://sararuizt.github.io/biblioteca-urbana/browse.html#trap"
-"trap argentino",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#trap%20argentino"
-"trap latino",2,"https://sararuizt.github.io/biblioteca-urbana/browse.html#trap%20latino"
-"trueno",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#trueno"
-"urbano",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#urbano"
-"young cister",1,"https://sararuizt.github.io/biblioteca-urbana/browse.html#young%20cister"
+{% for u in uniqueTerms %}{%- assign count = terms | where_exp: 'item', 'item == u' | size -%}
+"{{ u }}",{{ count }},"{{ u | uri_escape | prepend: "/browse.html#" | absolute_url }}"
+{% endfor %}{% endif %}

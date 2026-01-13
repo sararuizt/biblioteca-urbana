@@ -1,0 +1,11 @@
+field,display_name,search_term,browse_link,browse_group,sort_by,hidden
+image,Portada,false,false,false,false,false
+title,Título,true,true,false,true,false
+creator,Artista,true,true,true,true,false
+subject,Género,true,true,true,false,false
+date,Año,true,false,true,true,false
+format,Formato,true,true,true,false,false
+awards,Premios,true,true,true,false,false
+track_count,Canciones,false,false,false,false,false
+duration,Duración,false,false,false,false,false
+objectid,ID,true,false,false,false,true

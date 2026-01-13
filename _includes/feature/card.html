@@ -1,0 +1,133 @@
+<style>
+  /* 1. LA COLUMNA (El espacio que ocupa) */
+  .album-card-col {
+    margin-bottom: 30px;
+    padding: 0 15px;
+    position: relative;
+    transition: z-index 0s; /* Instantáneo */
+  }
+
+  /* --- SOLUCIÓN AL CHOQUE --- */
+  /* Al pasar el ratón, esta columna se pone ENCIMA de todas las demás */
+  .album-card-col:hover {
+    z-index: 100; 
+  }
+
+  /* 2. LA TARJETA ESTILO SPOTIFY (El fondo gris) */
+  .spotify-card {
+    background-color: #181818; /* Fondo gris oscuro Spotify */
+    border-radius: 8px;
+    padding: 16px; /* Espacio interior para que respire */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    height: 100%; /* Para que todas midan lo mismo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  /* Efecto Hover en la tarjeta entera */
+  .spotify-card:hover {
+    background-color: #282828; /* Se ilumina un poco */
+    transform: translateY(-5px); /* Flota un poquito hacia arriba */
+  }
+
+  /* 3. CONTENEDOR DE LA IMAGEN + VINILO */
+  .album-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    margin-bottom: 15px;
+    cursor: pointer;
+    /* Importante: NO poner overflow hidden para que el disco pueda salir */
+  }
+
+  /* La imagen de portada */
+  .album-cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 10; /* La portada está por encima del disco */
+    border-radius: 4px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+  }
+
+  /* El disco de vinilo (Escondido detrás) */
+  .vinyl-disk {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    height: 96%;
+    z-index: 1; /* Detrás de la portada */
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* ANIMACIÓN: El disco sale al pasar el ratón por la TARJETA COMPLETA */
+  .spotify-card:hover .vinyl-disk {
+    transform: translateX(45%) rotate(120deg); /* Sale el disco */
+  }
+
+  .spotify-card:hover .album-cover {
+    transform: scale(1.02); /* Pequeño zoom en la portada */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+  }
+
+  /* 4. TEXTOS */
+  .text-container {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .album-title {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .album-artist {
+    color: #b3b3b3 !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* El título se pone verde al pasar el ratón */
+  .spotify-card:hover .album-title {
+    color: #1DB954 !important;
+  }
+
+  a.no-hover-line { text-decoration: none !important; }
+</style>
+
+{% if include.item %}
+  {% assign my_item = include.item %}
+{% else %}
+  {% assign my_item = item %}
+{% endif %}
+
+<a href="{{ '/item.html' | relative_url | append: '?id=' | append: my_item.objectid }}" class="no-hover-line">
+  
+  <div class="spotify-card">
+      <div class="album-wrapper">
+        <img src="{{ '/assets/img/vinyl.png' | relative_url }}" class="vinyl-disk" alt="Vinyl" onerror="this.style.display='none'">
+        
+        {% if my_item.filename contains '/' %}
+            <img src="{{ my_item.filename }}" class="album-cover" alt="{{ my_item.title }}">
+        {% else %}
+            <img src="{{ my_item.filename | prepend: '/objects/' | relative_url }}" class="album-cover" alt="{{ my_item.title }}">
+        {% endif %}
+      </div>
+
+      <div class="text-container">
+        <div class="album-title">{{ my_item.title }}</div>
+        <div class="album-artist">{{ my_item.creator }}</div>
+      </div>
+  </div>
+
+</a>

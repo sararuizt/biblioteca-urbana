@@ -1,0 +1,68 @@
+---
+# base CSS for collectionbuilder
+# includes some theming elements
+# pulled in from "theme.yml" and "config-theme-colors.csv"
+---
+@charset "utf-8";
+
+/* base variables pulled from theme.yml */
+$base-font-family: {{ site.data.theme.base-font-family | default: '""' }};
+$base-font-size: {{ site.data.theme.base-font-size | default: '""' }};
+$text-color: {{ site.data.theme.text-color | default: '""' }};
+$link-color: {{ site.data.theme.link-color | default: '""' }};
+
+/* theme colors pulled from config-theme-colors */
+{% assign btns = site.data.config-theme-colors | where_exp: "item","item.color != nil" %}
+{% if btns != empty %}
+{% for btn in btns %}
+{% assign color = btn.color | strip %}{% if color != empty %}
+${{ btn.color_class | slugify }}: {{ color }};{% endif %}
+{% endfor %}
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    {% for btn in btns %}{% assign color = btn.color | strip %}{% if color != empty %}
+    "{{ btn.color_class | slugify }}": ${{ btn.color_class | slugify }}{% unless forloop.last %},{% endunless %}
+    {% endif %}{% endfor %}
+  ),
+  $theme-colors
+);
+@import "theme-colors", "theme-utilities";
+{% endif %}
+
+@import "base", "pages", "custom";
+
+/* 1. Forzamos que todas las cartas tengan la misma altura total */
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. MAGIA PARA LAS IMÁGENES */
+.card-img-top {
+  /* Altura fija obligatoria */
+  height: 400px !important; 
+  
+  /* Esta es la clave: RECORTA la imagen para llenar el hueco sin deformarla */
+  object-fit: cover; 
+  
+  /* Enfoca la parte de arriba de la imagen (donde suelen estar las caras/logos) */
+  object-position: top center; 
+}
+
+/* 3. Alinear el contenido del texto */
+.card-body {
+  flex-grow: 1; /* Hace que el cuerpo ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye el contenido uniformemente */
+}
+
+/* Opcional: Si algún título es muy largo, que no rompa la fila */
+.card-title {
+  min-height: 2.5rem; /* Reserva espacio para 2 líneas de texto siempre */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

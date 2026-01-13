@@ -1,0 +1,21 @@
+---
+layout: default
+title: Búsqueda de Álbumes
+---
+
+<div class="container mt-5">
+    <h1>Búsqueda y Filtros</h1>
+    <p class="lead" style="color:#777;">Utiliza la barra de búsqueda o los filtros para encontrar tu música.</p>
+    
+    {% include browse-search.html %}
+    
+    {% include browse-filters.html %}
+
+    <h3 class="mt-4">Resultados Encontrados</h3>
+    
+    <div id="cb-browse-results-target" class="row mt-4">
+        </div>
+</div>
+
+<script src="{{ '/assets/js/lunr.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/browse.js' | relative_url }}"></script>

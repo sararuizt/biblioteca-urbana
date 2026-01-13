@@ -1,0 +1,7 @@
+<div class="input-group mb-4">
+  <input type="text" class="form-control" id="nav-search" placeholder="Escribe un artista, canción, género..." aria-label="Buscar">
+  <div class="input-group-append">
+    <button class="btn btn-dark" type="submit" onclick="window.location.assign('{{ '/browse.html' | relative_url }}?q=' + document.getElementById('nav-search').value)">Buscar</button>
+    <a href="{{ '/browse.html' | relative_url }}" class="btn btn-outline-secondary">Limpiar</a>
+  </div>
+</div>

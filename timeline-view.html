@@ -1,0 +1,83 @@
+---
+layout: default
+title: Línea de Tiempo
+permalink: /timeline-view/
+---
+<style>
+  /* CSS para la línea de tiempo */
+  .timeline-container {
+    max-width: 900px;
+    margin: 40px auto;
+    position: relative;
+    padding-left: 50px;
+    border-left: 2px solid #121212; /* Línea central */
+  }
+  .timeline-year {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1db954; /* Color de acento verde */
+    background: white;
+    padding: 0 10px;
+    position: absolute;
+    left: -80px; 
+    top: -10px;
+    z-index: 20;
+  }
+  .timeline-item {
+    margin-bottom: 50px;
+    position: relative;
+    padding: 10px 0 10px 30px;
+  }
+  .timeline-item::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #1db954; 
+    border: 3px solid white;
+    border-radius: 50%;
+    position: absolute;
+    left: -8px;
+    top: 15px;
+    z-index: 10;
+  }
+  .item-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #121212;
+  }
+  .item-artist {
+    color: #444;
+    margin-top: 5px;
+    font-size: 0.95rem;
+  }
+</style>
+
+<div class="container">
+    <h1 class="text-center mt-5 mb-5" style="color:#121212;">Flow Cronológico de Lanzamientos</h1>
+    <a href="/" class="btn btn-sm btn-outline-secondary mb-4" style="color:#777; border-color:#ccc;">← Volver a Home</a>
+
+    <div class="timeline-container">
+        
+        {% comment %} Ordena la colección por fecha y agrupa los ítems por el campo "date" {% endcomment %}
+        {% assign sorted_items = site.data.demo-metadata | sort: "date" | reverse %}
+        
+        {% assign items_by_year = sorted_items | group_by: "date" %}
+
+        {% for year_group in items_by_year %}
+            <div class="timeline-year">{{ year_group.name }}</div>
+
+            {% for item in year_group.items %}
+                <div class="timeline-item">
+                    <p class="item-title">
+                        <a href="{{ '/items/' | relative_url }}{{ item.objectid }}.html" style="color:#121212; text-decoration:none;">
+                            {{ item.title }}
+                        </a>
+                    </p>
+                    <p class="item-artist">Artista: {{ item.creator }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+url: "https://sararuizt.github.io"
+baseurl: "/biblioteca-urbana"
+
+source-code: https://github.com/CollectionBuilder/collectionbuilder-gh
+
+title: Biblioteca Urbana
+tagline: La mejor colección de música urbana y trap
+description: "Colección digital de álbumes."
+author: CollectionBuilder
+
+metadata: demo-metadata
+
+exclude: [docs/, Rakefile, README.md, LICENSE, CITATION.cff, CODE_OF_CONDUCT.md, CONTRIBUTING.md]
+sass:
+  style: compressed
+
+page-gen:
+  timeline:
+    field: date
+
+browse:
+  fields:
+    - title
+    - creator
+    - date
+    - subject
+    - description
+    - formato_fisico
+
+metadata-facets:
+  - "subject|Géneros"
+  - "formato_fisico|Formato"
