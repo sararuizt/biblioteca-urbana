@@ -1,0 +1,352 @@
+{
+    "title": {
+        "media": {
+          "url": "/biblioteca-urbana/objects/",
+          "caption": null,
+          "credit": "Biblioteca Urbana"
+        },
+        "text": {
+          "headline": "Biblioteca Urbana Timeline",
+          "text": "Colección digital de álbumes."
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item001.jpg",
+          "caption": "Un verano sin ti",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item001",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2022"
+        },
+        "text": {
+          "headline": "Un verano sin ti",
+          "text": "Lanzado en 2022, este álbum redefinió la música latina global convirtiéndose en la banda sonora absoluta del verano eterno. Benito se aleja del trap oscuro para abrazar los sonidos caribeños, fusionando reguetón, merengue y mambo con una estética relajada y melancólica.\r\nA través de sus 23 canciones, el disco funciona como una playlist perfecta que transita entre la fiesta y la soledad. Incluye himnos generacionales como 'Tití me preguntó', 'Me porto bonito' y 'Moscow Mule', consolidando al puertorriqueño como el artista número uno del mundo."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item002.jpg",
+          "caption": "Descanso en Poder",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item002",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2020"
+        },
+        "text": {
+          "headline": "Descanso en Poder",
+          "text": "Publicado en 2020, este trabajo conceptual marcó un antes y un después en la carrera del granadino, presentándose como un falso retiro musical. Es una obra madura donde perfecciona su fórmula única de 'música folklórica atemporal' mezclada con autotune y sonidos urbanos.\r\nEl álbum destaca por su introspección y emotividad, alejándose de las tendencias vacías para ofrecer letras profundas sobre la familia, el éxito y la raíz. Canciones como 'La Recomienda' o 'Yalo Yale' demuestran por qué Dellafuente es una figura de culto en la escena española."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item003.jpg",
+          "caption": "Pretty Boy Dirty Boy",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item003",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2015"
+        },
+        "text": {
+          "headline": "Pretty Boy Dirty Boy",
+          "text": "El segundo álbum de estudio del colombiano, lanzado en 2015, fue el catalizador que lo transformó en una superestrella internacional. El concepto juega con la dualidad de su personalidad: el lado romántico y pop ('Pretty Boy') frente al lado seductor y callejero ('Dirty Boy').\r\nEste disco definió el sonido del pop urbano de la década, entregando éxitos masivos como 'Borro Cassette', 'El Perdedor' y 'Sin Contrato'. Es la mezcla perfecta de baladas pegadizas y reguetón comercial que abrió las puertas del mercado global a Maluma."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item004.jpg",
+          "caption": "ISLAND BOYZ",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item004",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "ISLAND BOYZ",
+          "text": "Lanzado a mediados de 2025, este álbum supone el regreso triunfal de Myke Towers a sus raíces más tropicales y caribeñas, alejándose de la dureza del trap para ofrecer un sonido diseñado para el verano y la costa.\r\nEl proyecto destaca por fusionar el reguetón clásico con afrobeats y ritmos relajados, como se escucha en colaboraciones estelares como 'Soleao' (junto a Quevedo) o 'Rica Bebe' (con De La Ghetto). Un disco luminoso que busca conectar con la fiesta y la buena vibra sin perder la lírica afilada del Young King."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item005.jpg",
+          "caption": "SATURNO",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item005",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2017"
+        },
+        "text": {
+          "headline": "SATURNO",
+          "text": "Estrenado en 2022, es un viaje experimental hacia el espacio exterior y los sonidos de los años 90. Rauw rompe con el reguetón convencional para apostar por el Miami bass, el freestyle y la electrónica, creando una estética retro-futurista única.\r\nEl álbum es una experiencia inmersiva llena de energía, diseñada para pistas de baile de otra galaxia. Temas como 'Punto 40', 'Lokera' y 'Ron Cola' demuestran su capacidad para reinventarse y liderar la vanguardia del género urbano."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item006.jpg",
+          "caption": "La Madrugá",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item006",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "La Madrugá",
+          "text": "Un proyecto íntimo y conceptual que captura la esencia de la noche y la melancolía del barrio de El Palo. Delaossa utiliza este EP para explorar sus miedos y ambiciones con una honestidad brutal, acompañado de producciones atmosféricas y elegantes.\r\nAunque breve, es una pieza fundamental para entender la profundidad lírica del malagueño. Canciones como 'Veneno' muestran su habilidad para narrar historias cotidianas cargadas de sentimiento, consolidándolo como uno de los mejores letristas de su generación."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item007.jpg",
+          "caption": "Sauce Boyz 2",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item007",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2021"
+        },
+        "text": {
+          "headline": "Sauce Boyz 2",
+          "text": "Publicado a finales de 2021, es la obra magna que coronó a Eladio como el rey del trap en español. Un disco extenso y versátil donde el artista demuestra que puede fluir sobre cualquier ritmo, desde el drill más agresivo hasta el synth-pop o el reguetón.\r\nLa lista de colaboradores es de primer nivel (Karol G, Bad Bunny, Rels B), pero es la personalidad y el 'barranqueo' de Eladio lo que brilla. Himnos como 'Jóvenes Millonarios' o 'Mbappé' son prueba de su dominio técnico y su estatus en la escena internacional."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item008.jpg",
+          "caption": "Lo Mejor De Lo Peor",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item008",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2019"
+        },
+        "text": {
+          "headline": "Lo Mejor De Lo Peor",
+          "text": "Lanzado en 2019, este álbum es una cátedra de estilo y códigos callejeros por parte de uno de los padres del trap en España. Kaydy Cain se aleja de la radiofórmula para entregar un sonido crudo, real y fiel a la esencia del 'barrio'.\r\nEs un disco que celebra la lealtad y critica la falsedad de la industria, mezclando ritmos de reguetón clásico, salsa y trap. Temas como 'Mentiroso' o 'Algo como tú' mantienen viva la llama de Pxxr Gvng con una producción que suena a calle y autenticidad."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item009.jpg",
+          "caption": "Keoland",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item009",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2018"
+        },
+        "text": {
+          "headline": "Keoland",
+          "text": "El álbum que definió la estética 'Rockstar' de Kidd Keo en 2018. Fue una apuesta arriesgada que introdujo un sonido trap internacional, caracterizado por el uso del Spanglish y unos bajos potentes diseñados para retumbar en festivales.\r\nMás allá de la controversia, el disco cimentó su base de fans global y su estilo único. Tracks icónicos como 'Superstars' o 'Pitbull' muestran la energía explosiva y la actitud desafiante que convirtieron a Keo en un referente del trap duro en Europa."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item010.jpg",
+          "caption": "Lágrimas desordenadas",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item010",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2012"
+        },
+        "text": {
+          "headline": "Lágrimas desordenadas",
+          "text": "Publicado el 13 de noviembre de 2012, 'Lágrimas desordenadas' supone la reinvención del artista asturiano, dejando atrás su etapa más 'canalla' para abrazar un sonido más sofisticado y rockero.\r\nA través de sus 11 canciones, Melendi combina baladas románticas con letras cargadas de ironía y crítica social, destacando éxitos masivos que definieron su nueva etapa musical como 'Tu jardín con enanitos'."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item011.jpg",
+          "caption": "Me muevo con dios",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item011",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2023"
+        },
+        "text": {
+          "headline": "Me muevo con dios",
+          "text": "Lanzado en 2023, es el proyecto más ambicioso del artista canario hasta la fecha. Un álbum conceptual y denso que equilibra el flexeo del éxito con una introspección profunda sobre la fe, la lealtad y el precio de la fama.\r\nCon una producción impecable y una lista de temas extensa, Cruzzi demuestra por qué es el 'tiburón' de la escena. Canciones como 'Sangre y Fe' (con Quevedo) o '4 Prez' son demostraciones de técnica y carisma que lo elevan al olimpo del rap en español."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item012.jpg",
+          "caption": "Flakk Daniel's Lp",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item012",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2018"
+        },
+        "text": {
+          "headline": "Flakk Daniel's Lp",
+          "text": "El disco de 2018 que marcó el punto de inflexión en la carrera de Rels B hacia el estrellato masivo. Aquí, el mallorquín pule su sonido característico: una mezcla suave y elegante de hip-hop, R&B y pop que entra sola.\r\nEs un trabajo hedonista y romántico, perfecto para escuchar en bucle. Temas como 'Lejos de ti' o 'Es mejor' se convirtieron en clásicos instantáneos gracias a su simplicidad melódica y a la capacidad de Skinny Flakk para conectar emocionalmente con el oyente."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item013.jpg",
+          "caption": "Portate Bien!",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item013",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Portate Bien!",
+          "text": "Publicado en mayo de 2025, este segundo álbum confirma a Mvrk como la punta de lanza de la nueva ola urbana. Es un trabajo agresivo, directo y cargado de personalidad que mezcla el trap de vanguardia con toques pop y electrónicos.\r\nCon 18 temas y colaboraciones estratégicas, el disco rechaza las etiquetas convencionales. Canciones como 'DAMN' (con D.Valentino) o 'Suena COOL' demuestran un sonido fresco y desenfadado que conecta perfectamente con la generación más joven, consolidando su ascenso desde el underground."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item014.jpg",
+          "caption": "Paraíso",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item014",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2022"
+        },
+        "text": {
+          "headline": "Paraíso",
+          "text": "Lanzado en 2022, este álbum es pura energía electrónica fusionada con el reguetón más bailable. Mora se confirma no solo como un gran compositor, sino como un visionario de la producción, creando un sonido experimental que invita a la fiesta constante.\r\nEl disco está diseñado para sonar en clubes y festivales, con transiciones fluidas y beats futuristas. Éxitos virales como 'Memorias' o 'La Inocente' destacan en un tracklist que no da respiro y que elevó al puertorriqueño a la primera línea del género."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item015.jpg",
+          "caption": "Ameri",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item015",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2024"
+        },
+        "text": {
+          "headline": "Ameri",
+          "text": "El proyecto más esperado y personal de Duki, que representa la culminación de su viaje desde las batallas de gallos hasta llenar estadios. Concebido como su 'nirvana' musical, es un álbum donde el argentino busca la trascendencia sonora y lírica.\r\nCentrado en un sonido trap evolucionado y atmosférico, Ameri explora la soledad en la cima y la madurez artística. Es el testimonio de una leyenda viva que, tras probar el reguetón, vuelve a sus raíces para entregar el disco definitivo de su carrera."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item016.jpg",
+          "caption": "Planes de medianoche",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item016",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2024"
+        },
+        "text": {
+          "headline": "Planes de medianoche",
+          "text": "Lanzado a principios de 2024, es el álbum que consolidó a Young Cister como una de las voces más versátiles y elegantes de Chile. Un trabajo nocturno y emotivo que navega por el R&B, el trap melódico y la electrónica suave.\r\nEl disco destaca por su cohesión y sensibilidad, ideal para escuchas nocturnas. A través de sus letras, Cister explora el amor y las relaciones modernas con un estilo sofisticado que lo diferencia del resto de la escena urbana chilena."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item017.jpg",
+          "caption": "Sempre Cor Deluxe",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item017",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Sempre Cor Deluxe",
+          "text": "Lanzada en abril de 2025, esta edición expandida del álbum debut de C Marí reafirma al valenciano como una de las revelaciones del año. El proyecto amplía su universo sonoro mezclando con naturalidad el pop, la música urbana y toques underground.\r\nLa versión Deluxe añade temas esenciales que completan la narrativa del disco original. Canciones como 'Babalà' o 'Sempapa' (junto a Mushkaa) destacan por su frescura y demuestran la capacidad del artista para crear melodías pegadizas sin perder su esencia autoral."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item018.jpg",
+          "caption": "Atrevido",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item018",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2020"
+        },
+        "text": {
+          "headline": "Atrevido",
+          "text": "El debut explosivo de 2020 que puso al barrio de La Boca en el mapa mundial. Trueno se presenta con una fuerza arrolladora, fusionando el rap de la vieja escuela con el trap moderno y la identidad argentina.\r\nEs un disco lleno de orgullo, flow y barras afiladas. El éxito mundial 'Mamichula' y el himno 'Sangría' (con Wos) son los pilares de un álbum que demostró que el freestyle argentino podía traducirse en obras de estudio de altísima calidad."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item019.jpg",
+          "caption": "PO2054AZ(Vol.II)",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item019",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2024"
+        },
+        "text": {
+          "headline": "PO2054AZ(Vol.II)",
+          "text": "Publicado en 2023, es la continuación del viaje introspectivo del artista gallego. Un álbum ambicioso y ecléctico que desafía los géneros, mezclando pop, garaje y sonidos urbanos con una estética visual y sonora sumamente cuidada.\r\nSen Senra se confirma aquí como un crooner moderno, capaz de transmitir emoción pura con una producción sofisticada. Temas como 'Uno de eses gatos' o 'No quiero ser un cantante' reflejan su búsqueda de la belleza y la originalidad en un mercado saturado."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item020.jpg",
+          "caption": "Concreto",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item020",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Concreto",
+          "text": "Lanzado en febrero de 2025, este mixtape consolida a L'Haine como una voz imprescindible del underground español. Es un trabajo crudo y atmosférico, que captura la frialdad de la 'jungla de cemento' con producciones oscuras y letras viscerales.\r\nEl proyecto destaca por su narrativa urbana y su sonido envolvente, cercano al drill y al trap emocional. Temas como 'Comodines' o las colaboraciones con MVRK muestran a un artista que ha sabido pulir su estilo único, convirtiendo la tristeza y la calle en arte."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item021.jpg",
+          "caption": "Lux",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item021",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "Lux",
+          "text": "Lanzado en noviembre de 2025, el cuarto álbum de estudio de Rosalía vuelve a romper esquemas. Alejándose del minimalismo de Motomami, la catalana se adentra en el pop orquestal y el avant-pop, creando una obra grandilocuente y luminosa.\r\nLux es un ejercicio de virtuosismo vocal y producción compleja, donde lo clásico se encuentra con el futuro. Un disco conceptual que explora la claridad y la esperanza, demostrando una vez más que Rosalía juega en una liga propia, muy por delante de las tendencias."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item022.jpg",
+          "caption": "Rosa&Rojo",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item022",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2024"
+        },
+        "text": {
+          "headline": "Rosa&Rojo",
+          "text": "Publicado a finales de 2024, este trabajo posiciona a D.Valentino como una de las figuras emergentes más interesantes. El álbum navega por una dualidad emocional y sonora, fusionando melodías urbanas con una sensibilidad indie muy particular.\r\nCon una producción cuidada y un tono melancólico, el disco ofrece temas como 'marihuana' y 'entre la luna y yo'. Es una carta de presentación sólida que destaca por su honestidad y por un sonido envolvente que atrapa desde la primera escucha."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item023.jpg",
+          "caption": "N2STAL5IA",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item023",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2025"
+        },
+        "text": {
+          "headline": "N2STAL5IA",
+          "text": "Lanzado en noviembre de 2025, este álbum es un viaje emocional a la crisis de los 25 años. Natalia Lacunza entrega su obra más madura y electrónica, jugando con el concepto de la nostalgia generacional y el crecimiento personal.\r\nEl disco combina el synth-pop con letras íntimas y vulnerables. Canciones como 'Singapur' o 'Plastilina' destacan en un tracklist que funciona como un abrazo para quienes se sienten perdidos en la vida adulta, consolidando su sello de identidad único en el pop español."
+        }
+      },{
+        "media": {
+          "url": "https://sararuizt.github.io/biblioteca-urbana/objects/item024.jpg",
+          "caption": "Nectar",
+          "link": "https://sararuizt.github.io/biblioteca-urbana/item.html?id=item024",
+          "credit": "Biblioteca Urbana"
+        },
+        "start_date": { 
+          "year": "2020"
+        },
+        "text": {
+          "headline": "Nectar",
+          "text": "Lanzado en 2020, este álbum terminó de consagrar la transformación de Joji de fenómeno de internet a artista de culto del R&B alternativo. Es una obra larga, melancólica y cinematográfica, llena de arreglos orquestales y voces etéreas.\r\nA través de sus 18 canciones, Joji explora la fama, el desamor y la soledad con una belleza inquietante. Éxitos globales como 'Run' o 'Sanctuary' demuestran su talento para crear melodías pop perfectas envueltas en una atmósfera oscura y espacial."
+        }
+      }
+    ]
+}

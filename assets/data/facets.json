@@ -1,0 +1,68 @@
+{
+    "facets": [ 
+        {
+            "field": "subject",
+            "terms": { 
+                "alt. urbano": 1,
+                "boom bap": 1,
+                "dancehall": 1,
+                "drill": 2,
+                "flamenco urbano": 1,
+                "fusión": 1,
+                "hip-hop": 4,
+                "indie pop": 1,
+                "pop": 3,
+                "pop latino": 2,
+                "pop urbano": 4,
+                "pop-rock español": 2,
+                "r&b": 3,
+                "r&b alternativo": 2,
+                "r&b urbano": 1,
+                "rap": 5,
+                "rap español": 1,
+                "reggaetón": 7,
+                "synthwave": 1,
+                "trap": 7,
+                "trap argentino": 1,
+                "trap latino": 2,
+                "urbano": 1
+            }
+        },
+        {
+            "field": "creator",
+            "terms": { 
+                "bad bunny": 1,
+                "c mari": 1,
+                "cruz cafuné": 1,
+                "d.valentino": 1,
+                "delaossa": 1,
+                "dellafuente": 1,
+                "duki": 1,
+                "eladio carrión": 1,
+                "joji": 1,
+                "kaydy cain": 1,
+                "kidd keo": 1,
+                "l'haine": 1,
+                "maluma": 1,
+                "melendi": 1,
+                "mora": 1,
+                "mvrk": 1,
+                "myke towers": 1,
+                "natalia lacunza": 1,
+                "rauw alejandro": 1,
+                "rels b": 1,
+                "rosalia": 1,
+                "sen senra": 1,
+                "trueno": 1,
+                "young cister": 1
+            }
+        },
+        {
+            "field": "format",
+            "terms": { 
+                "image/jpeg": 24
+            }
+        }
+        
+    ]
+}

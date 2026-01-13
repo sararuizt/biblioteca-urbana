@@ -1,0 +1,61 @@
+{
+    "profile": "data-package",
+    "name": "biblioteca-urbana-data",
+    "title": "Biblioteca Urbana Data",
+    "description": "Metadata and data derived from Biblioteca Urbana. Colección digital de álbumes.",
+    
+    "homepage": "https://sararuizt.github.io/biblioteca-urbana/",
+    "contributors": [
+        {
+            "title": "CollectionBuilder",
+            "role": "author"
+        }
+    ],
+    "image": "/biblioteca-urbana/objects/",
+    "licenses": [
+        {
+            "name": "CC0-1.0",
+            "title": "CC0 1.0",
+            "path": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
+    ],
+    "resources": [
+         
+        {
+            "name": "facets-json",
+            "path": "facets.json",
+            "title": "Biblioteca Urbana Metadata Facets",
+            "description":"Unique values and counts of metadata facet fields.",
+            "format":"json",
+            "profile": "data-resource"
+        },
+        
+        
+        
+        
+        {
+            "name": "timeline-json",
+            "path": "timelinejs.json",
+            "title": "Biblioteca Urbana timeline metadata",
+            "description": "Time-based metadata formatted for TimelineJS or other applications.",
+            "format":"json",
+            "profile": "data-resource"
+        },
+        {
+            "name": "metadata-csv",
+            "path": "metadata.csv",
+            "title": "Biblioteca Urbana full metadata in csv",
+            "description": "Complete metadata export for Biblioteca Urbana objects.",
+            "format":"csv",
+            "profile":"data-resource"
+        },
+        {
+            "name": "metadata-json",
+            "path": "metadata.json",
+            "title": "Biblioteca Urbana full metadata in json",
+            "description": "Complete metadata export for Biblioteca Urbana objects.",
+            "format":"json",
+            "profile":"data-resource"
+        }
+    ]
+}

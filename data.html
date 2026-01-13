@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Data | Biblioteca Urbana</title>
+<link rel="shortcut icon" type="image/x-icon" href="/biblioteca-urbana/favicon.ico">
+<!--
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+   
+    built with CollectionBuilder-GH
+    https://github.com/CollectionBuilder/collectionbuilder-gh 
+-->
+<meta name="generator" content="collectionbuilder-gh" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<!-- load style sheets -->
+
+<link rel="stylesheet" href="/biblioteca-urbana/assets/lib/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="/biblioteca-urbana/assets/lib/datatables/datatables.min.css">
+
+
+<!-- load custom css last to allow overrides -->
+<link rel="stylesheet" href="/biblioteca-urbana/assets/css/cb.css" type="text/css">
+
+
+
+<!-- Last build date: 2026-01-13 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <div class="container">
+    <div class="row align-items-center">
+        <div id="title" class="col-12">
+            <h1 class="mt-2"><a class="text-dark" href="/biblioteca-urbana/">Biblioteca Urbana</a></h1>	 
+            <p>La mejor colección de música urbana y trap</p>
+        </div>
+        
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/">Inicio</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/browse.html">Explorar</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/about.html">Información</a>
+                </li></ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/biblioteca-urbana/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+            
+        </div>
+    </div>
+</nav>
+
+    <main id="maincontent" role="main" class="flex-shrink-0">
+    <div class="container my-4">
+    
+<button type="button" class="btn btn-primary btn-lg float-md-end" data-bs-toggle="modal" data-bs-target="#dataModal">Download Data</button>
+<!-- Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="dataModalLabel">Collection Data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>Download this collection's data in a variety of reusable formats.</p>
+                
+                
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Complete Metadata</h2>
+                        <p class="card-text">All metadata fields for all collection items, available as a CSV spreadsheet (usable in Excel, Google Sheets, and similar programs) or JSON file (often used with web applications).</p>
+                        <a href="/biblioteca-urbana/assets/data/metadata.csv" class="btn btn-outline-dark" download>Metadata CSV</a>
+                        <a href="/biblioteca-urbana/assets/data/metadata.json" class="btn btn-outline-dark" target="_blank">Metadata JSON</a>
+                    </div>
+                </div>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Metadata Facets</h2>
+                        <p class="card-text">List of unique values and their count for specific metadata fields, useful for understanding content of the fields.</p>
+                        <a href="/biblioteca-urbana/assets/data/facets.json" class="btn btn-outline-dark" target="_blank">Facets JSON</a>
+                    </div>
+                </div>
+                
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Timeline</h2>
+                        <p class="card-text">A time-focused JSON data export designed for use with <a href="https://timeline.knightlab.com/">TimelineJS</a>.</p>
+                        <a href="/biblioteca-urbana/assets/data/timelinejs.json" class="btn btn-outline-dark" target="_blank">TimelineJS JSON</a>
+                    </div>
+                </div><div class="card my-3">
+                    <div class="card-body">
+                        <h2 class="card-title h4">Website Source Code</h2>
+                        <p class="card-text">GitHub repository containing source code for this project built with <a href="https://github.com/CollectionBuilder/collectionbuilder-gh">CollectionBuilder-GH</a>.</p>
+                        <a href="https://github.com/CollectionBuilder/collectionbuilder-gh" class="btn btn-outline-dark">Source Code</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h2 id="collection-metadata">Collection Metadata</h2>
+
+<p>The table below provides sorting and basic search of the collection contents. 
+Use the “CSV” or “Excel” button below to download the filtered metadata you see on the page in your preferred format. 
+Alternatively, click the “Download” button at the top right to view the full collection metadata in various export formats.</p>
+
+
+<div class="table-responsive-md">
+    <table id="item-table" class="table table-striped">
+        <thead>
+            <tr>
+                
+                <th scope="col">Title</th>
+                
+                <th scope="col">Date</th>
+                
+                <th scope="col">Description</th>
+                
+                <th scope="col">Subjects</th>
+                
+                <th>Link</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+</div>
+
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/biblioteca-urbana/" class="text-white">Biblioteca Urbana</a></h2>
+            <p class="text-white"><small>Colección digital de álbumes.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/browse.html">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/about.html">Información</a>
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" title="CollectionBuilder">
+                        <img src="/biblioteca-urbana/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/biblioteca-urbana/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/biblioteca-urbana/assets/lib/lazysizes.min.js" async></script>
+
+
+
+<script type="text/javascript" language="javascript" src="/biblioteca-urbana/assets/lib/datatables/datatables.min.js"></script>
+<script>
+/* initialize DataTables using jquery */
+$(document).ready( function () {
+    $('#item-table').DataTable( {
+        // use DataTables ajax load to 
+        ajax: { url: '/biblioteca-urbana/assets/js/metadata.min.json', dataSrc: 'objects' },
+        // defer render to speed up large sets
+        "deferRender": true,
+        // enable pagination 
+        "paging": true,
+        "lengthMenu": [[ 25, 50, 100, -1], [ 25, 50, 100, "All"]],
+        // add download features
+        dom: 'B<"row mt-2"<"col-md-6"l><"col-md-6"f>>t<"row"<"col-md-6"i><"col-md-6"p>>', 
+        buttons: [ 'excelHtml5', 'csvHtml5' ],
+        // set up the columns from the json
+        columns: [ { data: '0' },{ data: '1' },{ data: '2' },{ data: '3' },{ data: '4' } ],
+        columnDefs: [ 
+            // turn relative link into absolute
+            { "render": function ( data ) { return 'https://sararuizt.github.io' + data; },"targets": 4 },
+            // combine link with first column
+            { "render": function ( data, type, row ) { return '<a href="' + row['4'] +'">'+ data +'</a>'; },"targets": 0 },
+            // hide the link column
+            { "visible": false,  "targets": [ 4 ] }
+        ],
+        // sort based on the second column
+        order: [[ 1, "asc" ]]
+    });
+});
+</script>
+
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/biblioteca-urbana/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</a>
+  </body>
+</html>

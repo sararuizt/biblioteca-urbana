@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>About | Biblioteca Urbana</title>
+<link rel="shortcut icon" type="image/x-icon" href="/biblioteca-urbana/favicon.ico">
+<!--
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+   
+    built with CollectionBuilder-GH
+    https://github.com/CollectionBuilder/collectionbuilder-gh 
+-->
+<meta name="generator" content="collectionbuilder-gh" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<!-- load style sheets -->
+
+<link rel="stylesheet" href="/biblioteca-urbana/assets/lib/bootstrap.min.css" type="text/css">
+
+
+
+<!-- load custom css last to allow overrides -->
+<link rel="stylesheet" href="/biblioteca-urbana/assets/css/cb.css" type="text/css">
+
+
+
+<!-- Last build date: 2026-01-13 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <div class="container">
+    <div class="row align-items-center">
+        <div id="title" class="col-12">
+            <h1 class="mt-2"><a class="text-dark" href="/biblioteca-urbana/">Biblioteca Urbana</a></h1>	 
+            <p>La mejor colección de música urbana y trap</p>
+        </div>
+        
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/">Inicio</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/browse.html">Explorar</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="/biblioteca-urbana/about.html">Información</a>
+                </li></ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/biblioteca-urbana/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+            
+        </div>
+    </div>
+</nav>
+
+    <main id="maincontent" role="main" class="flex-shrink-0">
+    <style>
+    /* --- CONFIGURACIÓN DE ESCENA --- */
+    body {
+        background-color: #0d0d0d;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        perspective: 1000px; /* Clave para el 3D */
+    }
+
+    /* --- CABECERA CON GLITCH (Estilo Urbano) --- */
+    .about-header {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+    }
+
+    .glitch-title {
+        font-size: 4rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        position: relative;
+        display: inline-block;
+        color: #fff;
+    }
+    
+    .glitch-title::before, .glitch-title::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0d0d0d;
+    }
+    
+    .glitch-title::before {
+        left: 2px;
+        text-shadow: -1px 0 #ff00c1;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    
+    .glitch-title::after {
+        left: -2px;
+        text-shadow: -1px 0 #1DB954;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim {
+        0% { clip: rect(30px, 9999px, 10px, 0); }
+        20% { clip: rect(80px, 9999px, 90px, 0); }
+        40% { clip: rect(10px, 9999px, 50px, 0); }
+        60% { clip: rect(40px, 9999px, 20px, 0); }
+        80% { clip: rect(70px, 9999px, 60px, 0); }
+        100% { clip: rect(20px, 9999px, 80px, 0); }
+    }
+    @keyframes glitch-anim2 {
+        0% { clip: rect(10px, 9999px, 80px, 0); }
+        20% { clip: rect(30px, 9999px, 10px, 0); }
+        40% { clip: rect(90px, 9999px, 30px, 0); }
+        60% { clip: rect(15px, 9999px, 55px, 0); }
+        80% { clip: rect(60px, 9999px, 40px, 0); }
+        100% { clip: rect(5px, 9999px, 95px, 0); }
+    }
+
+    .about-subtitle {
+        color: #1DB954;
+        font-family: monospace;
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+        margin-top: 10px;
+    }
+
+    /* --- GRID DE CREADORAS --- */
+    .creators-grid {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+        margin-bottom: 80px; /* Espacio antes de la info */
+    }
+
+    /* --- TARJETA 3D INTERACTIVA --- */
+    .creator-card {
+        width: 400px;
+        height: 550px;
+        background: #181818;
+        border-radius: 20px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.1s;
+        cursor: pointer;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border: 1px solid #333;
+    }
+
+    .card-content {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(145deg, #1e1e1e, #121212);
+        overflow: hidden;
+    }
+    
+    .creator-img-box {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px solid #1DB954;
+        padding: 5px;
+        position: relative;
+        margin-bottom: 20px;
+        transform: translateZ(50px);
+    }
+    
+    .creator-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        transition: 0.3s;
+    }
+    
+    .creator-card:hover .creator-img { filter: grayscale(0%); }
+
+    .creator-name {
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0;
+        color: #fff;
+        transform: translateZ(30px);
+    }
+    
+    .creator-role {
+        color: #1DB954;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        transform: translateZ(20px);
+    }
+
+    .fun-stats {
+        width: 100%;
+        transform: translateZ(40px);
+    }
+    
+    .stat-row { margin-bottom: 12px; }
+    
+    .stat-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: #ccc;
+        margin-bottom: 5px;
+    }
+    
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #333;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: #1DB954;
+        width: 0%;
+        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 10px #1DB954;
+    }
+
+    .card-shine {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.1), transparent 40%);
+        pointer-events: none;
+        border-radius: 20px;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .creator-card:hover .card-shine { opacity: 1; }
+
+    .equalizer {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        gap: 3px;
+        transform: translateZ(20px);
+    }
+    .bar {
+        width: 4px;
+        background: #fff;
+        animation: bounce 0.5s infinite ease-in-out alternate;
+    }
+    .bar:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+    .bar:nth-child(2) { height: 18px; animation-delay: 0.2s; }
+    .bar:nth-child(3) { height: 14px; animation-delay: 0.3s; }
+    .bar:nth-child(4) { height: 20px; animation-delay: 0.1s; }
+
+    @keyframes bounce {
+        0% { height: 5px; opacity: 0.5; }
+        100% { height: 20px; opacity: 1; }
+    }
+
+    /* --- NUEVA SECCIÓN: PROYECTO Y CONTACTO --- */
+    .info-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+        padding-top: 40px;
+        border-top: 1px solid #333; /* Separador visual */
+    }
+
+    .info-card {
+        background: rgba(24, 24, 24, 0.8);
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s;
+    }
+    .info-card:hover { border-color: #555; }
+
+    .info-card h2 {
+        color: #1DB954;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 0;
+    }
+
+    .info-text {
+        color: #ccc;
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .tech-stack {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .tech-badge {
+        background: #333;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid #444;
+        transition: 0.2s;
+    }
+    .tech-badge:hover { border-color: #1DB954; color: #1DB954; }
+
+    /* Estilos del Formulario */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-label {
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .form-input {
+        background: #0d0d0d;
+        border: 1px solid #333;
+        padding: 14px;
+        border-radius: 6px;
+        color: #fff;
+        font-family: inherit;
+        transition: 0.3s;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #1DB954;
+        box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2);
+    }
+
+    .submit-btn {
+        background: #1DB954;
+        color: #000;
+        border: none;
+        padding: 16px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+        background: #1ed760;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(29, 185, 84, 0.3);
+    }
+
+    @media (max-width: 900px) {
+        .info-section { grid-template-columns: 1fr; }
+        .creators-grid { gap: 40px; }
+    }
+</style>
+
+<div class="about-container">
+
+    <div class="about-header">
+        <div class="glitch-title" data-text="SOBRE NOSOTRAS">SOBRE NOSOTRAS</div>
+        <div class="about-subtitle">// EQUIPO & PROYECTO //</div>
+    </div>
+
+    <div class="creators-grid">
+
+        <!-- CARTA SARA -->
+        <div class="creator-card" id="card-sara">
+            <div class="card-content">
+                <div class="creator-img-box">
+                    <img src="sara.jpg" class="creator-img" alt="Sara">
+                </div>
+                <h2 class="creator-name">Sara Ruiz</h2>
+                <span class="creator-role">Co-creadora & desarrollo</span>
+
+                <div class="fun-stats">
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Implementación técnica</span><span>87%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 87%"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Arquitectura de información</span><span>100%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Crisis existenciales</span><span>∞</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    </div>
+                </div>
+
+                <div class="equalizer">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+            <div class="card-shine"></div>
+        </div>
+
+        <!-- CARTA DANIELA -->
+        <div class="creator-card" id="card-daniela">
+            <div class="card-content">
+                <div class="creator-img-box">
+                    <img src="daniela.jpg" class="creator-img" alt="Daniela">
+                </div>
+                <h2 class="creator-name">Daniela González</h2>
+                <span class="creator-role">Co-creadora & Diseño</span>
+
+                <div class="fun-stats">
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Diseño de Interfaz</span><span>95%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Gestión de Metadatos</span><span>98%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 98%"></div></div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><span>Obsesión Musical</span><span>100%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    </div>
+                </div>
+
+                <div class="equalizer">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+            <div class="card-shine"></div>
+        </div>
+
+    </div>
+
+    <!-- SECCIÓN INFERIOR: INFO PROYECTO + CONTACTO -->
+    <div class="info-section">
+        
+        <!-- COLUMNA IZQUIERDA: PRESENTACIÓN -->
+        <div class="info-card">
+            <h2>
+                <span>💿</span> Sobre Biblioteca Urbana
+            </h2>
+            <p class="info-text">
+                Este proyecto nace como una iniciativa académica universitaria para documentar, preservar y visualizar la evolución de la música urbana contemporánea. Utilizando herramientas de humanidades digitales, hemos creado un archivo vivo que conecta álbumes icónicos con metadatos detallados.
+            </p>
+            <p class="info-text" style="margin-top: 15px;">
+                Nuestro objetivo es ofrecer una experiencia inmersiva donde el usuario no solo consulte datos, sino que explore las conexiones entre el Trap, el Reggaetón y la música alternativa a través de líneas de tiempo y mapas interactivos.
+            </p>
+            
+            <div class="tech-stack">
+                <span class="tech-badge">Jekyll</span>
+                <span class="tech-badge">CollectionBuilder</span>
+                <span class="tech-badge">GitHub Pages</span>
+                <span class="tech-badge">CSV Data</span>
+                <span class="tech-badge">CSS3 & JS</span>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: FORMULARIO CONTACTO -->
+        <div class="info-card">
+            <h2>
+                <span>📩</span> Contacto
+            </h2>
+            <p class="info-text" style="margin-bottom: 25px;">
+                ¿Tienes alguna sugerencia para añadir un álbum a la colección o has encontrado un error? Escríbenos directamente.
+            </p>
+            
+            <form class="contact-form" action="#" onsubmit="alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.'); return false;">
+                <div class="form-group">
+                    <label class="form-label">Tu Nombre</label>
+                    <input type="text" class="form-input" placeholder="Ej: Benito Martínez">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Académico / Personal</label>
+                    <input type="email" class="form-input" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mensaje</label>
+                    <textarea class="form-input" rows="3" placeholder="Cuéntanos..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    /* --- LÓGICA DE TILT 3D --- */
+    const cards = document.querySelectorAll('.creator-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            // Calcular posición del ratón relativa a la tarjeta
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;
+            
+            // Calcular centro
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calcular rotación (máximo 20 grados)
+            const rotateX = ((y - centerY) / centerY) * -15; 
+            const rotateY = ((x - centerX) / centerX) * 15;
+
+            // Aplicar transformación
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            
+            // Mover brillo holográfico
+            const shine = card.querySelector('.card-shine');
+            shine.style.setProperty('--x', `${x}px`);
+            shine.style.setProperty('--y', `${y}px`);
+        });
+
+        // Resetear al salir
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
+        });
+    });
+
+    /* --- ANIMAR BARRAS AL CARGAR --- */
+    window.addEventListener('load', () => {
+        // Simple hack para reiniciar la animación de width al cargar
+        const fills = document.querySelectorAll('.progress-fill');
+        fills.forEach(fill => {
+            const finalWidth = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(() => {
+                fill.style.width = finalWidth;
+            }, 300);
+        });
+    });
+</script>
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/biblioteca-urbana/" class="text-white">Biblioteca Urbana</a></h2>
+            <p class="text-white"><small>Colección digital de álbumes.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/browse.html">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light active" href="/biblioteca-urbana/about.html">Información</a>
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" title="CollectionBuilder">
+                        <img src="/biblioteca-urbana/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/biblioteca-urbana/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/biblioteca-urbana/assets/lib/lazysizes.min.js" async></script>
+
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/biblioteca-urbana/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</a>
+  </body>
+</html>

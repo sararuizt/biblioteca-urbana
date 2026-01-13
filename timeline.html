@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Línea Temporal | Biblioteca Urbana</title>
+<link rel="shortcut icon" type="image/x-icon" href="/biblioteca-urbana/favicon.ico">
+<!--
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+   
+    built with CollectionBuilder-GH
+    https://github.com/CollectionBuilder/collectionbuilder-gh 
+-->
+<meta name="generator" content="collectionbuilder-gh" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<!-- load style sheets -->
+
+<link rel="stylesheet" href="/biblioteca-urbana/assets/lib/bootstrap.min.css" type="text/css">
+
+
+
+<!-- load custom css last to allow overrides -->
+<link rel="stylesheet" href="/biblioteca-urbana/assets/css/cb.css" type="text/css">
+
+
+
+<!-- Last build date: 2026-01-13 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <div class="container">
+    <div class="row align-items-center">
+        <div id="title" class="col-12">
+            <h1 class="mt-2"><a class="text-dark" href="/biblioteca-urbana/">Biblioteca Urbana</a></h1>	 
+            <p>La mejor colección de música urbana y trap</p>
+        </div>
+        
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/">Inicio</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/browse.html">Explorar</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/about.html">Información</a>
+                </li></ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/biblioteca-urbana/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+            
+        </div>
+    </div>
+</nav>
+
+    <main id="maincontent" role="main" class="flex-shrink-0">
+    <div class="container my-4">
+    
+<style>
+    /* =========================================
+       1. SCROLL HORIZONTAL
+       ========================================= */
+    .horizontal-scroll-container {
+        width: 100%; overflow-x: auto; overflow-y: hidden;
+        padding: 80px 0; position: relative;
+        scrollbar-width: thin; scrollbar-color: #1DB954 #121212;
+        cursor: grab; user-select: none; -webkit-overflow-scrolling: touch; 
+    }
+    .horizontal-scroll-container.active { cursor: grabbing; }
+
+    .h-wrapper {
+        display: flex; align-items: center; width: max-content; 
+        position: relative; padding: 0 50px; min-height: 400px; pointer-events: none; 
+    }
+
+    .h-line-axis {
+        position: absolute; top: 50%; left: 0; right: 0;
+        height: 4px; background-color: #1DB954; border-radius: 2px; z-index: 0;
+    }
+
+    .h-item {
+        position: relative; width: 180px; flex-shrink: 0;
+        margin: 0 15px; z-index: 1; display: flex; flex-direction: column; align-items: center;
+        pointer-events: auto; cursor: pointer;
+    }
+
+    .h-item:nth-child(odd) { transform: translateY(-70%); }
+    .h-item:nth-child(even) { transform: translateY(72%); }
+
+    .h-card {
+        background-color: #212529; border-radius: 8px; overflow: hidden; width: 100%;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.5); transition: transform 0.2s;
+        border: 1px solid #333; -webkit-user-drag: none; 
+    }
+
+    .h-card:hover {
+        transform: scale(1.05); border-color: #1DB954;
+        box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+    }
+
+    .h-img {
+        width: 100%; height: 120px; object-fit: cover;
+        border-bottom: 1px solid #333; pointer-events: none;
+    }
+
+    .h-info { padding: 10px; text-align: center; }
+    .h-date { color: #1DB954; font-weight: 800; font-size: 1.2rem; display: block; }
+    .h-info h3 { font-size: 0.9rem; margin: 0; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .h-info h4 { font-size: 0.75rem; color: #b3b3b3; margin: 2px 0 0 0; }
+
+    .h-dot {
+        position: absolute; width: 16px; height: 16px;
+        background: #121212; border: 3px solid #1DB954;
+        border-radius: 50%; left: 50%; transform: translateX(-50%); z-index: 2;
+    }
+    .h-connector {
+        position: absolute; width: 2px; height: 40px;
+        background: #1DB954; left: 50%; transform: translateX(-50%); z-index: 0;
+    }
+    .h-item:nth-child(odd) .h-dot { bottom: -50px; }
+    .h-item:nth-child(even) .h-dot { top: -50px; }
+    .h-item:nth-child(odd) .h-connector { bottom: -42px; }
+    .h-item:nth-child(even) .h-connector { top: -42px; }
+
+    /* =========================================
+       2. ESTILO MODAL
+       ========================================= */
+    .timeline-modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px);
+        z-index: 10000; display: none; justify-content: center; align-items: center;
+        opacity: 0; transition: opacity 0.3s ease;
+    }
+    .timeline-modal-overlay.open { display: flex; opacity: 1; }
+
+    .timeline-modal {
+        background-color: #121212; border-radius: 10px;
+        width: 600px; max-width: 90%; max-height: 90vh;
+        overflow-y: auto; position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        display: flex; flex-direction: column; color: #fff; padding: 30px;
+        border: 1px solid #333;
+    }
+
+    .modal-close {
+        position: absolute; top: 15px; right: 15px;
+        background: rgba(255,255,255,0.1); border: none; color: #fff; width: 30px; height: 30px;
+        border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center;
+        font-size: 14px; transition: 0.2s; z-index: 10;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.3); }
+
+    /* CABECERA */
+    .modal-top-section { display: flex; gap: 25px; align-items: flex-end; margin-bottom: 30px; }
+    .modal-cover-img { width: 160px; height: 160px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.7); border-radius: 6px; flex-shrink: 0; }
+    .modal-header-info { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5px; }
+    .modal-header-info h2 { font-size: 2.5rem; font-weight: 900; margin: 0; line-height: 1; letter-spacing: -1px; color: #fff; }
+    .modal-header-info h3 { font-size: 1.2rem; color: #fff; margin: 5px 0 5px 0; font-weight: 700; }
+    .modal-meta-line { font-size: 0.9rem; color: #b3b3b3; font-weight: 400; }
+
+    /* DESCRIPCIÓN */
+    .modal-desc-section { margin-bottom: 30px; }
+    .modal-label { display: block; color: #1DB954; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .modal-desc-text { font-size: 1rem; line-height: 1.5; color: #d1d1d1; margin: 0; }
+
+    /* GRID DE DATOS SIMPLIFICADO */
+    .modal-data-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 Columnas */
+        gap: 20px;
+        border-top: 1px solid #2a2a2a;
+        padding-top: 25px;
+    }
+
+    .data-item { display: flex; flex-direction: column; }
+    
+    .data-value { font-weight: 700; font-size: 1.1rem; color: #fff; margin-top: 4px; }
+    .data-value.big-number { font-size: 1.4rem; letter-spacing: -0.5px; }
+
+    @media (max-width: 600px) {
+        .modal-top-section { flex-direction: column; align-items: center; text-align: center; }
+        .modal-header-info { align-items: center; }
+        .modal-data-grid { grid-template-columns: 1fr; text-align: center; }
+    }
+</style>
+
+<div class="horizontal-scroll-container" id="scrollBox">
+    <div class="h-wrapper">
+        <div class="h-line-axis"></div>
+        
+        
+        <div class="h-item" onclick="openTimelineModal('item010')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item010.jpg" class="h-img" alt="Lágrimas desordenadas" />
+                
+                <div class="h-info">
+                    <span class="h-date">2012</span>
+                    <h3>Lágrimas desordenadas</h3>
+                    <h4>Melendi</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item003')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item003.jpg" class="h-img" alt="Pretty Boy Dirty Boy" />
+                
+                <div class="h-info">
+                    <span class="h-date">2015</span>
+                    <h3>Pretty Boy Dirty Boy</h3>
+                    <h4>Maluma</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item005')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item005.jpg" class="h-img" alt="SATURNO" />
+                
+                <div class="h-info">
+                    <span class="h-date">2017</span>
+                    <h3>SATURNO</h3>
+                    <h4>Rauw Alejandro</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item012')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item012.jpg" class="h-img" alt="Flakk Daniel's Lp" />
+                
+                <div class="h-info">
+                    <span class="h-date">2018</span>
+                    <h3>Flakk Daniel's Lp</h3>
+                    <h4>Rels b</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item009')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item009.jpg" class="h-img" alt="Keoland" />
+                
+                <div class="h-info">
+                    <span class="h-date">2018</span>
+                    <h3>Keoland</h3>
+                    <h4>Kidd Keo</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item008')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item008.jpg" class="h-img" alt="Lo Mejor De Lo Peor" />
+                
+                <div class="h-info">
+                    <span class="h-date">2019</span>
+                    <h3>Lo Mejor De Lo Peor</h3>
+                    <h4>Kaydy Cain</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item024')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item024.jpg" class="h-img" alt="Nectar" />
+                
+                <div class="h-info">
+                    <span class="h-date">2020</span>
+                    <h3>Nectar</h3>
+                    <h4>Joji</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item002')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item002.jpg" class="h-img" alt="Descanso en Poder" />
+                
+                <div class="h-info">
+                    <span class="h-date">2020</span>
+                    <h3>Descanso en Poder</h3>
+                    <h4>Dellafuente</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item018')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item018.jpg" class="h-img" alt="Atrevido" />
+                
+                <div class="h-info">
+                    <span class="h-date">2020</span>
+                    <h3>Atrevido</h3>
+                    <h4>Trueno</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item007')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item007.jpg" class="h-img" alt="Sauce Boyz 2" />
+                
+                <div class="h-info">
+                    <span class="h-date">2021</span>
+                    <h3>Sauce Boyz 2</h3>
+                    <h4>Eladio Carrión</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item001')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item001.jpg" class="h-img" alt="Un verano sin ti" />
+                
+                <div class="h-info">
+                    <span class="h-date">2022</span>
+                    <h3>Un verano sin ti</h3>
+                    <h4>Bad Bunny</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item014')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item014.jpg" class="h-img" alt="Paraíso" />
+                
+                <div class="h-info">
+                    <span class="h-date">2022</span>
+                    <h3>Paraíso</h3>
+                    <h4>Mora</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item011')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item011.jpg" class="h-img" alt="Me muevo con dios" />
+                
+                <div class="h-info">
+                    <span class="h-date">2023</span>
+                    <h3>Me muevo con dios</h3>
+                    <h4>Cruz Cafuné</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item022')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item022.jpg" class="h-img" alt="Rosa&amp;Rojo" />
+                
+                <div class="h-info">
+                    <span class="h-date">2024</span>
+                    <h3>Rosa&amp;Rojo</h3>
+                    <h4>D.Valentino</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item015')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item015.jpg" class="h-img" alt="Ameri" />
+                
+                <div class="h-info">
+                    <span class="h-date">2024</span>
+                    <h3>Ameri</h3>
+                    <h4>Duki</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item016')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item016.jpg" class="h-img" alt="Planes de medianoche" />
+                
+                <div class="h-info">
+                    <span class="h-date">2024</span>
+                    <h3>Planes de medianoche</h3>
+                    <h4>Young Cister</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item019')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item019.jpg" class="h-img" alt="PO2054AZ(Vol.II)" />
+                
+                <div class="h-info">
+                    <span class="h-date">2024</span>
+                    <h3>PO2054AZ(Vol.II)</h3>
+                    <h4>Sen Senra</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item017')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item017.jpg" class="h-img" alt="Sempre Cor Deluxe" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>Sempre Cor Deluxe</h3>
+                    <h4>C Mari</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item020')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item020.jpg" class="h-img" alt="Concreto" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>Concreto</h3>
+                    <h4>L'Haine</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item021')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item021.jpg" class="h-img" alt="Lux" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>Lux</h3>
+                    <h4>Rosalia</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item006')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item006.jpg" class="h-img" alt="La Madrugá" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>La Madrugá</h3>
+                    <h4>Delaossa</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item023')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item023.jpg" class="h-img" alt="N2STAL5IA" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>N2STAL5IA</h3>
+                    <h4>Natalia Lacunza</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item013')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item013.jpg" class="h-img" alt="Portate Bien!" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>Portate Bien!</h3>
+                    <h4>Mvrk</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+        <div class="h-item" onclick="openTimelineModal('item004')">
+            <div class="h-card">
+                
+                    <img src="/biblioteca-urbana/objects/item004.jpg" class="h-img" alt="ISLAND BOYZ" />
+                
+                <div class="h-info">
+                    <span class="h-date">2025</span>
+                    <h3>ISLAND BOYZ</h3>
+                    <h4>Myke Towers</h4>
+                </div>
+            </div>
+            <div class="h-connector"></div>
+            <div class="h-dot"></div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="timeline-modal-overlay" id="tModal" onclick="closeTModal(event)">
+    <div class="timeline-modal" onclick="event.stopPropagation()">
+        
+        <button class="modal-close" onclick="closeTModalDirect()">✕</button>
+        
+        <div class="modal-top-section">
+            <img id="tm-img" class="modal-cover-img" src="" />
+            <div class="modal-header-info">
+                <h2 id="tm-title">TÍTULO</h2>
+                <h3 id="tm-artist">Artista</h3>
+                <span class="modal-meta-line"><span id="tm-year">2023</span> • <span id="tm-tracks">12</span> canciones</span>
+            </div>
+        </div>
+
+        <div class="modal-desc-section">
+            <span class="modal-label">DESCRIPCIÓN</span>
+            <p id="tm-desc" class="modal-desc-text">...</p>
+        </div>
+
+        <div class="modal-data-grid">
+            
+            <div class="data-item">
+                <span class="modal-label">VALORACIÓN</span>
+                <span id="tm-rating-container" class="data-value" style="color: #FFD700; font-size: 1.2rem; letter-spacing: 2px;">
+                    ★★★★★
+                </span>
+            </div>
+
+            <div class="data-item">
+                <span class="modal-label">REPRODUCCIONES</span>
+                <span class="data-value big-number" id="tm-plays">0</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- 1. BASE DE DATOS JSON ---
+    // Incluye lógica de rating y plays desde CSV
+    const tAlbumsDB = {
+        
+        "item001": {
+            "title": "Un verano sin ti",
+            "creator": "Bad Bunny",
+            "date": "2022",
+            "filename": "item001.jpg",
+            "description": "Lanzado en 2022, este álbum redefinió la música latina global convirtiéndose en la banda sonora absoluta del verano eterno. Benito se aleja del trap oscuro para abrazar los sonidos caribeños, fusionando reguetón, merengue y mambo con una estética relajada y melancólica.\r\nA través de sus 23 canciones, el disco funciona como una playlist perfecta que transita entre la fiesta y la soledad. Incluye himnos generacionales como 'Tití me preguntó', 'Me porto bonito' y 'Moscow Mule', consolidando al puertorriqueño como el artista número uno del mundo.",
+            "track_count": "23",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item002": {
+            "title": "Descanso en Poder",
+            "creator": "Dellafuente",
+            "date": "2020",
+            "filename": "item002.jpg",
+            "description": "Publicado en 2020, este trabajo conceptual marcó un antes y un después en la carrera del granadino, presentándose como un falso retiro musical. Es una obra madura donde perfecciona su fórmula única de 'música folklórica atemporal' mezclada con autotune y sonidos urbanos.\r\nEl álbum destaca por su introspección y emotividad, alejándose de las tendencias vacías para ofrecer letras profundas sobre la familia, el éxito y la raíz. Canciones como 'La Recomienda' o 'Yalo Yale' demuestran por qué Dellafuente es una figura de culto en la escena española.",
+            "track_count": "10",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item003": {
+            "title": "Pretty Boy Dirty Boy",
+            "creator": "Maluma",
+            "date": "2015",
+            "filename": "item003.jpg",
+            "description": "El segundo álbum de estudio del colombiano, lanzado en 2015, fue el catalizador que lo transformó en una superestrella internacional. El concepto juega con la dualidad de su personalidad: el lado romántico y pop ('Pretty Boy') frente al lado seductor y callejero ('Dirty Boy').\r\nEste disco definió el sonido del pop urbano de la década, entregando éxitos masivos como 'Borro Cassette', 'El Perdedor' y 'Sin Contrato'. Es la mezcla perfecta de baladas pegadizas y reguetón comercial que abrió las puertas del mercado global a Maluma.",
+            "track_count": "16",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item004": {
+            "title": "ISLAND BOYZ",
+            "creator": "Myke Towers",
+            "date": "2025",
+            "filename": "item004.jpg",
+            "description": "Lanzado a mediados de 2025, este álbum supone el regreso triunfal de Myke Towers a sus raíces más tropicales y caribeñas, alejándose de la dureza del trap para ofrecer un sonido diseñado para el verano y la costa.\r\nEl proyecto destaca por fusionar el reguetón clásico con afrobeats y ritmos relajados, como se escucha en colaboraciones estelares como 'Soleao' (junto a Quevedo) o 'Rica Bebe' (con De La Ghetto). Un disco luminoso que busca conectar con la fiesta y la buena vibra sin perder la lírica afilada del Young King.",
+            "track_count": "23",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item005": {
+            "title": "SATURNO",
+            "creator": "Rauw Alejandro",
+            "date": "2017",
+            "filename": "item005.jpg",
+            "description": "Estrenado en 2022, es un viaje experimental hacia el espacio exterior y los sonidos de los años 90. Rauw rompe con el reguetón convencional para apostar por el Miami bass, el freestyle y la electrónica, creando una estética retro-futurista única.\r\nEl álbum es una experiencia inmersiva llena de energía, diseñada para pistas de baile de otra galaxia. Temas como 'Punto 40', 'Lokera' y 'Ron Cola' demuestran su capacidad para reinventarse y liderar la vanguardia del género urbano.",
+            "track_count": "18",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item006": {
+            "title": "La Madrugá",
+            "creator": "Delaossa",
+            "date": "2025",
+            "filename": "item006.jpg",
+            "description": "Un proyecto íntimo y conceptual que captura la esencia de la noche y la melancolía del barrio de El Palo. Delaossa utiliza este EP para explorar sus miedos y ambiciones con una honestidad brutal, acompañado de producciones atmosféricas y elegantes.\r\nAunque breve, es una pieza fundamental para entender la profundidad lírica del malagueño. Canciones como 'Veneno' muestran su habilidad para narrar historias cotidianas cargadas de sentimiento, consolidándolo como uno de los mejores letristas de su generación.",
+            "track_count": "17",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item007": {
+            "title": "Sauce Boyz 2",
+            "creator": "Eladio Carrión",
+            "date": "2021",
+            "filename": "item007.jpg",
+            "description": "Publicado a finales de 2021, es la obra magna que coronó a Eladio como el rey del trap en español. Un disco extenso y versátil donde el artista demuestra que puede fluir sobre cualquier ritmo, desde el drill más agresivo hasta el synth-pop o el reguetón.\r\nLa lista de colaboradores es de primer nivel (Karol G, Bad Bunny, Rels B), pero es la personalidad y el 'barranqueo' de Eladio lo que brilla. Himnos como 'Jóvenes Millonarios' o 'Mbappé' son prueba de su dominio técnico y su estatus en la escena internacional.",
+            "track_count": "22",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item008": {
+            "title": "Lo Mejor De Lo Peor",
+            "creator": "Kaydy Cain",
+            "date": "2019",
+            "filename": "item008.jpg",
+            "description": "Lanzado en 2019, este álbum es una cátedra de estilo y códigos callejeros por parte de uno de los padres del trap en España. Kaydy Cain se aleja de la radiofórmula para entregar un sonido crudo, real y fiel a la esencia del 'barrio'.\r\nEs un disco que celebra la lealtad y critica la falsedad de la industria, mezclando ritmos de reguetón clásico, salsa y trap. Temas como 'Mentiroso' o 'Algo como tú' mantienen viva la llama de Pxxr Gvng con una producción que suena a calle y autenticidad.",
+            "track_count": "11",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item009": {
+            "title": "Keoland",
+            "creator": "Kidd Keo",
+            "date": "2018",
+            "filename": "item009.jpg",
+            "description": "El álbum que definió la estética 'Rockstar' de Kidd Keo en 2018. Fue una apuesta arriesgada que introdujo un sonido trap internacional, caracterizado por el uso del Spanglish y unos bajos potentes diseñados para retumbar en festivales.\r\nMás allá de la controversia, el disco cimentó su base de fans global y su estilo único. Tracks icónicos como 'Superstars' o 'Pitbull' muestran la energía explosiva y la actitud desafiante que convirtieron a Keo en un referente del trap duro en Europa.",
+            "track_count": "7",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item010": {
+            "title": "Lágrimas desordenadas",
+            "creator": "Melendi",
+            "date": "2012",
+            "filename": "item010.jpg",
+            "description": "Publicado el 13 de noviembre de 2012, 'Lágrimas desordenadas' supone la reinvención del artista asturiano, dejando atrás su etapa más 'canalla' para abrazar un sonido más sofisticado y rockero.\r\nA través de sus 11 canciones, Melendi combina baladas románticas con letras cargadas de ironía y crítica social, destacando éxitos masivos que definieron su nueva etapa musical como 'Tu jardín con enanitos'.",
+            "track_count": "11",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item011": {
+            "title": "Me muevo con dios",
+            "creator": "Cruz Cafuné",
+            "date": "2023",
+            "filename": "item011.jpg",
+            "description": "Lanzado en 2023, es el proyecto más ambicioso del artista canario hasta la fecha. Un álbum conceptual y denso que equilibra el flexeo del éxito con una introspección profunda sobre la fe, la lealtad y el precio de la fama.\r\nCon una producción impecable y una lista de temas extensa, Cruzzi demuestra por qué es el 'tiburón' de la escena. Canciones como 'Sangre y Fe' (con Quevedo) o '4 Prez' son demostraciones de técnica y carisma que lo elevan al olimpo del rap en español.",
+            "track_count": "23",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item012": {
+            "title": "Flakk Daniel's Lp",
+            "creator": "Rels b",
+            "date": "2018",
+            "filename": "item012.jpg",
+            "description": "El disco de 2018 que marcó el punto de inflexión en la carrera de Rels B hacia el estrellato masivo. Aquí, el mallorquín pule su sonido característico: una mezcla suave y elegante de hip-hop, R&B y pop que entra sola.\r\nEs un trabajo hedonista y romántico, perfecto para escuchar en bucle. Temas como 'Lejos de ti' o 'Es mejor' se convirtieron en clásicos instantáneos gracias a su simplicidad melódica y a la capacidad de Skinny Flakk para conectar emocionalmente con el oyente.",
+            "track_count": "10",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item013": {
+            "title": "Portate Bien!",
+            "creator": "Mvrk",
+            "date": "2025",
+            "filename": "item013.jpg",
+            "description": "Publicado en mayo de 2025, este segundo álbum confirma a Mvrk como la punta de lanza de la nueva ola urbana. Es un trabajo agresivo, directo y cargado de personalidad que mezcla el trap de vanguardia con toques pop y electrónicos.\r\nCon 18 temas y colaboraciones estratégicas, el disco rechaza las etiquetas convencionales. Canciones como 'DAMN' (con D.Valentino) o 'Suena COOL' demuestran un sonido fresco y desenfadado que conecta perfectamente con la generación más joven, consolidando su ascenso desde el underground.",
+            "track_count": "18",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item014": {
+            "title": "Paraíso",
+            "creator": "Mora",
+            "date": "2022",
+            "filename": "item014.jpg",
+            "description": "Lanzado en 2022, este álbum es pura energía electrónica fusionada con el reguetón más bailable. Mora se confirma no solo como un gran compositor, sino como un visionario de la producción, creando un sonido experimental que invita a la fiesta constante.\r\nEl disco está diseñado para sonar en clubes y festivales, con transiciones fluidas y beats futuristas. Éxitos virales como 'Memorias' o 'La Inocente' destacan en un tracklist que no da respiro y que elevó al puertorriqueño a la primera línea del género.",
+            "track_count": "14",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item015": {
+            "title": "Ameri",
+            "creator": "Duki",
+            "date": "2024",
+            "filename": "item015.jpg",
+            "description": "El proyecto más esperado y personal de Duki, que representa la culminación de su viaje desde las batallas de gallos hasta llenar estadios. Concebido como su 'nirvana' musical, es un álbum donde el argentino busca la trascendencia sonora y lírica.\r\nCentrado en un sonido trap evolucionado y atmosférico, Ameri explora la soledad en la cima y la madurez artística. Es el testimonio de una leyenda viva que, tras probar el reguetón, vuelve a sus raíces para entregar el disco definitivo de su carrera.",
+            "track_count": "15",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item016": {
+            "title": "Planes de medianoche",
+            "creator": "Young Cister",
+            "date": "2024",
+            "filename": "item016.jpg",
+            "description": "Lanzado a principios de 2024, es el álbum que consolidó a Young Cister como una de las voces más versátiles y elegantes de Chile. Un trabajo nocturno y emotivo que navega por el R&B, el trap melódico y la electrónica suave.\r\nEl disco destaca por su cohesión y sensibilidad, ideal para escuchas nocturnas. A través de sus letras, Cister explora el amor y las relaciones modernas con un estilo sofisticado que lo diferencia del resto de la escena urbana chilena.",
+            "track_count": "13",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item017": {
+            "title": "Sempre Cor Deluxe",
+            "creator": "C Mari",
+            "date": "2025",
+            "filename": "item017.jpg",
+            "description": "Lanzada en abril de 2025, esta edición expandida del álbum debut de C Marí reafirma al valenciano como una de las revelaciones del año. El proyecto amplía su universo sonoro mezclando con naturalidad el pop, la música urbana y toques underground.\r\nLa versión Deluxe añade temas esenciales que completan la narrativa del disco original. Canciones como 'Babalà' o 'Sempapa' (junto a Mushkaa) destacan por su frescura y demuestran la capacidad del artista para crear melodías pegadizas sin perder su esencia autoral.",
+            "track_count": "20",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item018": {
+            "title": "Atrevido",
+            "creator": "Trueno",
+            "date": "2020",
+            "filename": "item018.jpg",
+            "description": "El debut explosivo de 2020 que puso al barrio de La Boca en el mapa mundial. Trueno se presenta con una fuerza arrolladora, fusionando el rap de la vieja escuela con el trap moderno y la identidad argentina.\r\nEs un disco lleno de orgullo, flow y barras afiladas. El éxito mundial 'Mamichula' y el himno 'Sangría' (con Wos) son los pilares de un álbum que demostró que el freestyle argentino podía traducirse en obras de estudio de altísima calidad.",
+            "track_count": "10",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item019": {
+            "title": "PO2054AZ(Vol.II)",
+            "creator": "Sen Senra",
+            "date": "2024",
+            "filename": "item019.jpg",
+            "description": "Publicado en 2023, es la continuación del viaje introspectivo del artista gallego. Un álbum ambicioso y ecléctico que desafía los géneros, mezclando pop, garaje y sonidos urbanos con una estética visual y sonora sumamente cuidada.\r\nSen Senra se confirma aquí como un crooner moderno, capaz de transmitir emoción pura con una producción sofisticada. Temas como 'Uno de eses gatos' o 'No quiero ser un cantante' reflejan su búsqueda de la belleza y la originalidad en un mercado saturado.",
+            "track_count": "24",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item020": {
+            "title": "Concreto",
+            "creator": "L'Haine",
+            "date": "2025",
+            "filename": "item020.jpg",
+            "description": "Lanzado en febrero de 2025, este mixtape consolida a L'Haine como una voz imprescindible del underground español. Es un trabajo crudo y atmosférico, que captura la frialdad de la 'jungla de cemento' con producciones oscuras y letras viscerales.\r\nEl proyecto destaca por su narrativa urbana y su sonido envolvente, cercano al drill y al trap emocional. Temas como 'Comodines' o las colaboraciones con MVRK muestran a un artista que ha sabido pulir su estilo único, convirtiendo la tristeza y la calle en arte.",
+            "track_count": "7",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item021": {
+            "title": "Lux",
+            "creator": "Rosalia",
+            "date": "2025",
+            "filename": "item021.jpg",
+            "description": "Lanzado en noviembre de 2025, el cuarto álbum de estudio de Rosalía vuelve a romper esquemas. Alejándose del minimalismo de Motomami, la catalana se adentra en el pop orquestal y el avant-pop, creando una obra grandilocuente y luminosa.\r\nLux es un ejercicio de virtuosismo vocal y producción compleja, donde lo clásico se encuentra con el futuro. Un disco conceptual que explora la claridad y la esperanza, demostrando una vez más que Rosalía juega en una liga propia, muy por delante de las tendencias.",
+            "track_count": "15",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item022": {
+            "title": "Rosa&Rojo",
+            "creator": "D.Valentino",
+            "date": "2024",
+            "filename": "item022.jpg",
+            "description": "Publicado a finales de 2024, este trabajo posiciona a D.Valentino como una de las figuras emergentes más interesantes. El álbum navega por una dualidad emocional y sonora, fusionando melodías urbanas con una sensibilidad indie muy particular.\r\nCon una producción cuidada y un tono melancólico, el disco ofrece temas como 'marihuana' y 'entre la luna y yo'. Es una carta de presentación sólida que destaca por su honestidad y por un sonido envolvente que atrapa desde la primera escucha.",
+            "track_count": "12",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item023": {
+            "title": "N2STAL5IA",
+            "creator": "Natalia Lacunza",
+            "date": "2025",
+            "filename": "item023.jpg",
+            "description": "Lanzado en noviembre de 2025, este álbum es un viaje emocional a la crisis de los 25 años. Natalia Lacunza entrega su obra más madura y electrónica, jugando con el concepto de la nostalgia generacional y el crecimiento personal.\r\nEl disco combina el synth-pop con letras íntimas y vulnerables. Canciones como 'Singapur' o 'Plastilina' destacan en un tracklist que funciona como un abrazo para quienes se sienten perdidos en la vida adulta, consolidando su sello de identidad único en el pop español.",
+            "track_count": "14",
+            "plays": 0, 
+            "rating": 5
+        },
+        
+        "item024": {
+            "title": "Nectar",
+            "creator": "Joji",
+            "date": "2020",
+            "filename": "item024.jpg",
+            "description": "Lanzado en 2020, este álbum terminó de consagrar la transformación de Joji de fenómeno de internet a artista de culto del R&B alternativo. Es una obra larga, melancólica y cinematográfica, llena de arreglos orquestales y voces etéreas.\r\nA través de sus 18 canciones, Joji explora la fama, el desamor y la soledad con una belleza inquietante. Éxitos globales como 'Run' o 'Sanctuary' demuestran su talento para crear melodías pop perfectas envueltas en una atmósfera oscura y espacial.",
+            "track_count": "18",
+            "plays": 0, 
+            "rating": 5
+        }
+        
+    };
+
+    // --- 2. LÓGICA DEL MODAL ---
+    const tModal = document.getElementById('tModal');
+
+    // Función para generar estrellas
+    function generateStars(rating) {
+        const score = parseInt(rating) || 0;
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+            if (i < score) {
+                starsHTML += '<span style="color: #FFD700;">★</span>';
+            } else {
+                starsHTML += '<span style="color: #444;">★</span>';
+            }
+        }
+        return starsHTML;
+    }
+
+    function openTimelineModal(id) {
+        const item = tAlbumsDB[id];
+        if (!item) return;
+
+        // Textos Básicos
+        document.getElementById('tm-title').innerText = item.title;
+        document.getElementById('tm-artist').innerText = item.creator;
+        document.getElementById('tm-year').innerText = item.date;
+        document.getElementById('tm-tracks').innerText = item.track_count || "-";
+        document.getElementById('tm-desc').innerText = item.description || "Sin descripción disponible.";
+
+        // --- SOLO REPRODUCCIONES Y VALORACIÓN ---
+
+        // 1. Reproducciones (Formato 1.234.567)
+        // Reproducciones (Fake number generator para demo)
+        let plays = Math.floor(Math.random() * (200000000 - 1000000) + 1000000);
+        document.getElementById('tm-plays').innerText = new Intl.NumberFormat('es-ES').format(plays);
+
+        // 2. Valoración (Estrellas generadas dinámicamente)
+        const ratingContainer = document.getElementById('tm-rating-container');
+        ratingContainer.innerHTML = generateStars(item.rating);
+
+        // Imagen
+        let imgSrc = item.filename;
+        if (imgSrc && !imgSrc.includes('/')) imgSrc = "/biblioteca-urbana/objects/" + imgSrc;
+        document.getElementById('tm-img').src = imgSrc;
+
+        // Abrir
+        tModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTModal(e) { if (e.target === tModal) closeTModalDirect(); }
+    function closeTModalDirect() { tModal.classList.remove('open'); document.body.style.overflow = ''; }
+
+    // --- 3. SCROLL DRAG & DROP ---
+    const slider = document.getElementById('scrollBox');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true; slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return; e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk;
+    });
+</script>
+
+
+</div>
+
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/biblioteca-urbana/" class="text-white">Biblioteca Urbana</a></h2>
+            <p class="text-white"><small>Colección digital de álbumes.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/browse.html">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light active" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/about.html">Información</a>
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" title="CollectionBuilder">
+                        <img src="/biblioteca-urbana/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/biblioteca-urbana/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/biblioteca-urbana/assets/lib/lazysizes.min.js" async></script>
+
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/biblioteca-urbana/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</a>
+  </body>
+</html>

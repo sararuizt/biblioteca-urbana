@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Crea tu Top 5 | Biblioteca Urbana</title>
+<link rel="shortcut icon" type="image/x-icon" href="/biblioteca-urbana/favicon.ico">
+<!--
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+   
+    built with CollectionBuilder-GH
+    https://github.com/CollectionBuilder/collectionbuilder-gh 
+-->
+<meta name="generator" content="collectionbuilder-gh" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<!-- load style sheets -->
+
+<link rel="stylesheet" href="/biblioteca-urbana/assets/lib/bootstrap.min.css" type="text/css">
+
+
+
+<!-- load custom css last to allow overrides -->
+<link rel="stylesheet" href="/biblioteca-urbana/assets/css/cb.css" type="text/css">
+
+
+
+<!-- Last build date: 2026-01-13 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <div class="container">
+    <div class="row align-items-center">
+        <div id="title" class="col-12">
+            <h1 class="mt-2"><a class="text-dark" href="/biblioteca-urbana/">Biblioteca Urbana</a></h1>	 
+            <p>La mejor colección de música urbana y trap</p>
+        </div>
+        
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/">Inicio</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/browse.html">Explorar</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/about.html">Información</a>
+                </li></ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/biblioteca-urbana/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+            
+        </div>
+    </div>
+</nav>
+
+    <main id="maincontent" role="main" class="flex-shrink-0">
+    <style>
+    /* --- ESTILOS GENERALES --- */
+    body {
+        background-color: #0d0d0d;
+        color: white;
+        user-select: none; /* Evitar selección de texto al arrastrar */
+        touch-action: pan-y; /* Mejorar scroll en móvil */
+    }
+
+    .maker-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .maker-header { text-align: center; margin-bottom: 20px; }
+    .maker-header h1 { font-weight: 900; font-size: 3rem; margin: 0; text-transform: uppercase; letter-spacing: -1px; }
+    .maker-header p { color: #b3b3b3; font-size: 1.1rem; margin-top: 10px; }
+
+    /* --- ZONA DEL RANKING (PODIO) --- */
+    .ranking-zone {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: #181818;
+        padding: 30px;
+        border-radius: 12px;
+        border: 1px solid #333;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .rank-slot {
+        display: flex;
+        align-items: center;
+        background: #282828;
+        border-radius: 8px;
+        padding: 10px;
+        height: 100px; /* Altura fija para el slot */
+        border: 2px dashed #444;
+        transition: 0.2s;
+        position: relative;
+    }
+
+    .rank-slot.drag-over {
+        background: #333;
+        border-color: #1DB954;
+        transform: scale(1.02);
+    }
+
+    /* Números del ranking */
+    .rank-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #444;
+        margin-right: 20px;
+        width: 50px;
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif; /* Fuente neutra para números */
+    }
+    
+    /* Colores para el Top 3 */
+    .slot-1 .rank-number { color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+    .slot-2 .rank-number { color: #C0C0C0; }
+    .slot-3 .rank-number { color: #CD7F32; }
+
+    /* Contenedor de la imagen droppeada */
+    .dropped-item {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        cursor: pointer;
+        animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .dropped-info {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .dropped-title { font-weight: 800; font-size: 1.1rem; color: #fff; }
+    .dropped-artist { font-size: 0.9rem; color: #b3b3b3; }
+
+    /* Mensaje vacío */
+    .empty-msg {
+        color: #555;
+        font-style: italic;
+        font-size: 0.9rem;
+        position: absolute;
+        left: 90px;
+        pointer-events: none;
+    }
+
+    /* --- ZONA DE DISCOS (POOL) --- */
+    .pool-section {
+        margin-top: 20px;
+    }
+    
+    .pool-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 10px;
+    }
+
+    .pool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+        padding: 20px;
+        background: #121212;
+        border-radius: 12px;
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #333;
+    }
+
+    .draggable-album {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 6px;
+        cursor: grab;
+        transition: transform 0.2s, opacity 0.2s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .draggable-album:hover { transform: scale(1.1); border: 2px solid #1DB954; }
+    .draggable-album:active { cursor: grabbing; }
+    
+    /* Clase para ocultar álbumes que ya están en el ranking */
+    .draggable-album.used {
+        opacity: 0.2;
+        pointer-events: none;
+        filter: grayscale(100%);
+    }
+
+    /* Animación de entrada */
+    @keyframes popIn {
+        from { transform: scale(0); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    /* BOTONES DE ACCIÓN */
+    .action-btn {
+        background: #1DB954;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: 800;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+    .action-btn:hover { transform: scale(1.05); background: #1ed760; }
+    .reset-btn { background: transparent; color: #fff; border: 1px solid #555; }
+    .reset-btn:hover { background: #333; border-color: #fff; transform: none; }
+
+</style>
+
+<div class="maker-container">
+    
+    <div class="maker-header">
+        <h1>Tu Top 5 Urbano</h1>
+        <p>Arrastra los álbumes de la colección para crear tu ranking definitivo.</p>
+    </div>
+
+    <!-- ZONA DE RANKING -->
+    <div class="ranking-zone" id="rankingZone">
+        <!-- Slot 1 -->
+        <div class="rank-slot slot-1" ondrop="drop(event)" ondragover="allowDrop(event)" data-rank="1">
+            <span class="rank-number">1</span>
+            <span class="empty-msg">Arrastra aquí tu favorito</span>
+        </div>
+        <!-- Slot 2 -->
+        <div class="rank-slot slot-2" ondrop="drop(event)" ondragover="allowDrop(event)" data-rank="2">
+            <span class="rank-number">2</span>
+        </div>
+        <!-- Slot 3 -->
+        <div class="rank-slot slot-3" ondrop="drop(event)" ondragover="allowDrop(event)" data-rank="3">
+            <span class="rank-number">3</span>
+        </div>
+        <!-- Slot 4 -->
+        <div class="rank-slot" ondrop="drop(event)" ondragover="allowDrop(event)" data-rank="4">
+            <span class="rank-number">4</span>
+        </div>
+        <!-- Slot 5 -->
+        <div class="rank-slot" ondrop="drop(event)" ondragover="allowDrop(event)" data-rank="5">
+            <span class="rank-number">5</span>
+        </div>
+    </div>
+
+    <!-- ZONA DE ÁLBUMES DISPONIBLES -->
+    <div class="pool-section">
+        <div class="pool-header">
+            <span style="font-weight:700; color:#1DB954; text-transform:uppercase;">Colección Completa</span>
+            <button class="action-btn reset-btn" onclick="resetRanking()">Reiniciar</button>
+        </div>
+        
+        <div class="pool-grid" id="albumPool">
+            
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item001.jpg" 
+                     alt="Un verano sin ti" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item001"
+                     data-title="Un verano sin ti"
+                     data-artist="Bad Bunny">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item002.jpg" 
+                     alt="Descanso en Poder" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item002"
+                     data-title="Descanso en Poder"
+                     data-artist="Dellafuente">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item003.jpg" 
+                     alt="Pretty Boy Dirty Boy" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item003"
+                     data-title="Pretty Boy Dirty Boy"
+                     data-artist="Maluma">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item004.jpg" 
+                     alt="ISLAND BOYZ" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item004"
+                     data-title="ISLAND BOYZ"
+                     data-artist="Myke Towers">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item005.jpg" 
+                     alt="SATURNO" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item005"
+                     data-title="SATURNO"
+                     data-artist="Rauw Alejandro">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item006.jpg" 
+                     alt="La Madrugá" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item006"
+                     data-title="La Madrugá"
+                     data-artist="Delaossa">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item007.jpg" 
+                     alt="Sauce Boyz 2" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item007"
+                     data-title="Sauce Boyz 2"
+                     data-artist="Eladio Carrión">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item008.jpg" 
+                     alt="Lo Mejor De Lo Peor" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item008"
+                     data-title="Lo Mejor De Lo Peor"
+                     data-artist="Kaydy Cain">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item009.jpg" 
+                     alt="Keoland" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item009"
+                     data-title="Keoland"
+                     data-artist="Kidd Keo">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item010.jpg" 
+                     alt="Lágrimas desordenadas" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item010"
+                     data-title="Lágrimas desordenadas"
+                     data-artist="Melendi">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item011.jpg" 
+                     alt="Me muevo con dios" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item011"
+                     data-title="Me muevo con dios"
+                     data-artist="Cruz Cafuné">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item012.jpg" 
+                     alt="Flakk Daniel's Lp" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item012"
+                     data-title="Flakk Daniel's Lp"
+                     data-artist="Rels b">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item013.jpg" 
+                     alt="Portate Bien!" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item013"
+                     data-title="Portate Bien!"
+                     data-artist="Mvrk">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item014.jpg" 
+                     alt="Paraíso" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item014"
+                     data-title="Paraíso"
+                     data-artist="Mora">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item015.jpg" 
+                     alt="Ameri" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item015"
+                     data-title="Ameri"
+                     data-artist="Duki">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item016.jpg" 
+                     alt="Planes de medianoche" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item016"
+                     data-title="Planes de medianoche"
+                     data-artist="Young Cister">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item017.jpg" 
+                     alt="Sempre Cor Deluxe" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item017"
+                     data-title="Sempre Cor Deluxe"
+                     data-artist="C Mari">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item018.jpg" 
+                     alt="Atrevido" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item018"
+                     data-title="Atrevido"
+                     data-artist="Trueno">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item019.jpg" 
+                     alt="PO2054AZ(Vol.II)" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item019"
+                     data-title="PO2054AZ(Vol.II)"
+                     data-artist="Sen Senra">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item020.jpg" 
+                     alt="Concreto" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item020"
+                     data-title="Concreto"
+                     data-artist="L'Haine">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item021.jpg" 
+                     alt="Lux" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item021"
+                     data-title="Lux"
+                     data-artist="Rosalia">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item022.jpg" 
+                     alt="Rosa&Rojo" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item022"
+                     data-title="Rosa&Rojo"
+                     data-artist="D.Valentino">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item023.jpg" 
+                     alt="N2STAL5IA" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item023"
+                     data-title="N2STAL5IA"
+                     data-artist="Natalia Lacunza">
+            
+                
+                
+                <img src="/biblioteca-urbana/objects/item024.jpg" 
+                     alt="Nectar" 
+                     class="draggable-album" 
+                     draggable="true" 
+                     ondragstart="drag(event)" 
+                     id="album-item024"
+                     data-title="Nectar"
+                     data-artist="Joji">
+            
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /* --- LÓGICA DE DRAG & DROP --- */
+    
+    function allowDrop(ev) {
+        ev.preventDefault();
+        // Añadir clase visual
+        ev.currentTarget.classList.add('drag-over');
+    }
+
+    // Limpiar estilo visual al salir (opcional pero recomendado)
+    document.querySelectorAll('.rank-slot').forEach(slot => {
+        slot.addEventListener('dragleave', () => {
+            slot.classList.remove('drag-over');
+        });
+    });
+
+    function drag(ev) {
+        // Guardamos el ID del elemento arrastrado
+        ev.dataTransfer.setData("text", ev.target.id);
+        // Efecto visual
+        ev.target.style.opacity = "0.5";
+    }
+
+    // Resetear opacidad si se cancela el drag
+    document.addEventListener("dragend", function(event) {
+        event.target.style.opacity = "1";
+    });
+
+    function drop(ev) {
+        ev.preventDefault();
+        // Quitar clase visual
+        ev.currentTarget.classList.remove('drag-over');
+
+        var data = ev.dataTransfer.getData("text");
+        var originalImg = document.getElementById(data);
+        
+        // El target puede ser el div del slot o un hijo. Aseguramos el slot.
+        var slot = ev.target.closest('.rank-slot');
+
+        // Si ya hay algo en el slot, lo "devolvemos" (visualmente reseteamos el original)
+        // Aquí hacemos una lógica simple: Limpiamos el slot y ponemos lo nuevo
+        
+        // 1. Marcar imagen original como "usada"
+        originalImg.classList.add('used');
+
+        // 2. Crear el HTML para el slot
+        const imgSrc = originalImg.src;
+        const title = originalImg.getAttribute('data-title');
+        const artist = originalImg.getAttribute('data-artist');
+
+        // Si el slot ya tenía algo, buscamos esa imagen en el pool y la reactivamos
+        const existingImg = slot.querySelector('.dropped-item');
+        if (existingImg) {
+            const oldId = existingImg.getAttribute('data-origin-id');
+            document.getElementById(oldId).classList.remove('used');
+        }
+
+        // 3. Inyectar contenido en el slot
+        // Mantenemos el número del ranking y añadimos el contenido
+        const rankNum = slot.querySelector('.rank-number').outerHTML;
+        
+        slot.innerHTML = `
+            ${rankNum}
+            <img src="${imgSrc}" class="dropped-item" onclick="removeFromSlot(this)" data-origin-id="${data}">
+            <div class="dropped-info">
+                <span class="dropped-title">${title}</span>
+                <span class="dropped-artist">${artist}</span>
+            </div>
+            <button onclick="removeBtnClick(this)" style="margin-left:auto; background:none; border:none; color:#555; cursor:pointer; font-size:1.2rem;">&times;</button>
+        `;
+    }
+
+    /* --- ELIMINAR DEL RANKING --- */
+    function removeFromSlot(imgElement) {
+        // Reactivar en el pool
+        const originId = imgElement.getAttribute('data-origin-id');
+        document.getElementById(originId).classList.remove('used');
+
+        // Limpiar slot
+        const slot = imgElement.closest('.rank-slot');
+        const rankNum = slot.querySelector('.rank-number').outerHTML;
+        const emptyText = slot.classList.contains('slot-1') ? "Arrastra aquí tu favorito" : "";
+        
+        slot.innerHTML = `
+            ${rankNum}
+            ${emptyText ? `<span class="empty-msg">${emptyText}</span>` : ''}
+        `;
+    }
+
+    function removeBtnClick(btn) {
+        // Helper para el botón X
+        const img = btn.parentNode.querySelector('.dropped-item');
+        removeFromSlot(img);
+    }
+
+    function resetRanking() {
+        if(!confirm('¿Borrar todo tu Top 5?')) return;
+        
+        // Limpiar todos los slots
+        document.querySelectorAll('.rank-slot').forEach(slot => {
+            const img = slot.querySelector('.dropped-item');
+            if(img) removeFromSlot(img);
+        });
+    }
+
+    /* --- SOPORTE MÓVIL SIMPLE (TAP TO SELECT) --- */
+    // Para móviles, como DragDrop es complejo, añadimos clic simple
+    let selectedForMobile = null;
+
+    document.querySelectorAll('.draggable-album').forEach(img => {
+        img.addEventListener('click', function() {
+            // Si es pantalla táctil o pequeña
+            if(window.innerWidth < 800) {
+                if(this.classList.contains('used')) return;
+                
+                // Efecto visual de selección
+                document.querySelectorAll('.draggable-album').forEach(i => i.style.border = 'none');
+                this.style.border = '3px solid #1DB954';
+                selectedForMobile = this;
+                
+                alert('Álbum seleccionado. Ahora toca un puesto (1-5) arriba para colocarlo.');
+            }
+        });
+    });
+
+    document.querySelectorAll('.rank-slot').forEach(slot => {
+        slot.addEventListener('click', function() {
+            if(window.innerWidth < 800 && selectedForMobile) {
+                // Simular drop
+                const mockEv = { 
+                    preventDefault: () => {}, 
+                    currentTarget: this, 
+                    target: this,
+                    dataTransfer: { getData: () => selectedForMobile.id } 
+                };
+                
+                // Limpiar estilo selección
+                selectedForMobile.style.border = 'none';
+                
+                drop(mockEv);
+                selectedForMobile = null;
+            }
+        });
+    });
+
+</script>
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/biblioteca-urbana/" class="text-white">Biblioteca Urbana</a></h2>
+            <p class="text-white"><small>Colección digital de álbumes.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/browse.html">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light active" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/about.html">Información</a>
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" title="CollectionBuilder">
+                        <img src="/biblioteca-urbana/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/biblioteca-urbana/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/biblioteca-urbana/assets/lib/lazysizes.min.js" async></script>
+
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/biblioteca-urbana/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</a>
+  </body>
+</html>

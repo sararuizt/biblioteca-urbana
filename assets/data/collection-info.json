@@ -1,0 +1,18 @@
+{ 
+    "title": "Biblioteca Urbana",
+    "url": "https://sararuizt.github.io/biblioteca-urbana/",
+    "image": "/biblioteca-urbana/objects/", 
+    "description": "Colección digital de álbumes.",
+    "publisher": { 
+        "name": "CollectionBuilder"
+    },
+    "date_start": "2012",
+    "date_end": "2025",
+    "objects": {
+        "image/jpeg": "24"
+        
+    },
+    "data": "https://sararuizt.github.io/biblioteca-urbana/assets/data/datapackage.json",
+    "last_build_date": "2026-01-13"
+}
+

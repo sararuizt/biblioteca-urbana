@@ -1,0 +1,2981 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Salón de la Fama | Biblioteca Urbana</title>
+<link rel="shortcut icon" type="image/x-icon" href="/biblioteca-urbana/favicon.ico">
+<!--
+  _____     ____        __  _           ___       _ __   __       
+ / ___/__  / / /__ ____/ /_(_)__  ___  / _ )__ __(_) /__/ /__ ____
+/ /__/ _ \/ / / -_) __/ __/ / _ \/ _ \/ _  / // / / / _  / -_) __/
+\___/\___/_/_/\__/\__/\__/_/\___/_//_/____/\_,_/_/_/\_,_/\__/_/   
+   
+    built with CollectionBuilder-GH
+    https://github.com/CollectionBuilder/collectionbuilder-gh 
+-->
+<meta name="generator" content="collectionbuilder-gh" />
+<meta http-equiv="Content-Language" content="en-us" >
+
+<!-- load style sheets -->
+
+<link rel="stylesheet" href="/biblioteca-urbana/assets/lib/bootstrap.min.css" type="text/css">
+
+
+
+<!-- load custom css last to allow overrides -->
+<link rel="stylesheet" href="/biblioteca-urbana/assets/css/cb.css" type="text/css">
+
+
+
+<!-- Last build date: 2026-01-13 -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div id="skip-to-content"><a href="#maincontent">Skip to main content</a></div>
+    <div class="container">
+    <div class="row align-items-center">
+        <div id="title" class="col-12">
+            <h1 class="mt-2"><a class="text-dark" href="/biblioteca-urbana/">Biblioteca Urbana</a></h1>	 
+            <p>La mejor colección de música urbana y trap</p>
+        </div>
+        
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        
+        <div class="collapse navbar-collapse" id="page-nav">
+            <ul class="navbar-nav me-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/">Inicio</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/browse.html">Explorar</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/biblioteca-urbana/about.html">Información</a>
+                </li></ul>
+            
+            <script>
+    function site_search() {
+        var query = document.getElementById("site-search").value;
+        window.open("/biblioteca-urbana/search/index.html?q=" + encodeURIComponent(query), "_self" );
+    }
+</script>
+            
+        </div>
+    </div>
+</nav>
+
+    <main id="maincontent" role="main" class="flex-shrink-0">
+    <style>
+    /* --- ESTILOS GENERALES DARK --- */
+    body { background-color: #0d0d0d !important; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; }
+    .artists-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    
+    /* BUSCADOR DE ARTISTAS */
+    .artist-search-box {
+        position: relative;
+        max-width: 500px;
+        margin: 20px auto 40px;
+    }
+    
+    .artist-input {
+        width: 100%;
+        background: #181818;
+        border: 1px solid #333;
+        border-radius: 30px;
+        padding: 15px 25px;
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+    }
+    
+    .artist-input:focus {
+        border-color: #1DB954;
+        box-shadow: 0 0 15px rgba(29, 185, 84, 0.2);
+    }
+
+    /* REJILLA PRINCIPAL DE ARTISTAS */
+    .artists-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    /* Clase para ocultar elementos al filtrar */
+    .artist-card.hidden {
+        display: none !important;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+        .artists-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+        .artists-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+        .artists-grid { grid-template-columns: 1fr; }
+    }
+
+    .artist-card {
+        position: relative; border-radius: 12px; overflow: hidden; cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s; aspect-ratio: 2/3; background: #111; border: 1px solid #333;
+    }
+    .artist-card:hover { transform: translateY(-10px); box-shadow: 0 0 25px rgba(29, 185, 84, 0.6); border-color: #1db954; }
+    
+    .artist-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.8); transition: 0.3s; }
+    .artist-card:hover .artist-photo { filter: grayscale(0%) brightness(1); }
+    
+    .artist-name-overlay {
+        position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        padding: 15px; text-align: center;
+    }
+    .artist-name-overlay h3 { margin: 0; color: white; font-weight: 900; text-transform: uppercase; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+
+    /* --- ESTILOS DEL MODAL --- */
+    .modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.95); backdrop-filter: blur(5px);
+        z-index: 1000;
+        display: none; justify-content: center; align-items: flex-start;
+        padding: 40px 20px;
+        overflow-y: auto; 
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-content {
+        background: #161616;
+        width: 100%; max-width: 900px; 
+        border-radius: 16px; border: 1px solid #333;
+        box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        position: relative;
+        margin-top: 20px; margin-bottom: 40px;
+        padding: 40px;
+        display: flex; flex-direction: column; gap: 40px;
+    }
+    
+    .modal-close {
+        position: absolute; top: 20px; right: 20px; font-size: 2rem; color: #fff; cursor: pointer; z-index: 20;
+        background: rgba(255,255,255,0.1); width: 40px; height: 40px; text-align: center; border-radius: 50%; line-height: 35px; transition: 0.2s;
+    }
+    .modal-close:hover { background: #1db954; color: black; }
+
+    /* --- SECCIÓN 1: PERFIL (ARRIBA) --- */
+    .profile-row {
+        display: flex; gap: 40px; align-items: flex-start;
+        border-bottom: 1px solid #333; padding-bottom: 40px;
+    }
+
+    .profile-img { 
+        width: 250px; aspect-ratio: 2/3; object-fit: cover; 
+        border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #444;
+        flex-shrink: 0;
+    }
+
+    .profile-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+    .modal-artist-name { 
+        font-size: 3.5rem; font-weight: 900; color: #fff; 
+        margin: 0 0 20px 0; line-height: 0.9; letter-spacing: -2px; text-transform: uppercase;
+        text-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+
+    .modal-bio { 
+        font-size: 1.1rem; line-height: 1.7; color: #bbb; 
+        white-space: pre-line; border-left: 4px solid #1db954; padding-left: 20px;
+    }
+
+    /* --- SECCIÓN 2: ÁLBUMES --- */
+    .albums-container { width: 100%; }
+
+    .section-label {
+        font-size: 0.9rem; font-weight: 800; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block;
+        border-bottom: 1px solid #333; padding-bottom: 5px;
+    }
+
+    /* A. DESTACADO (Rectangular) */
+    .album-row-card.featured {
+        display: flex; align-items: center; gap: 20px;
+        background: linear-gradient(90deg, #1db95411, transparent);
+        border: 2px solid #1db954; border-radius: 10px; padding: 15px;
+        text-decoration: none; color: inherit; transition: transform 0.2s;
+        margin-bottom: 30px;
+    }
+    .album-row-card.featured:hover { transform: translateX(10px); background: #202020; }
+    
+    .featured-cover { width: 90px; height: 90px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .featured-info { flex: 1; }
+    .featured-title { font-size: 1.3rem; font-weight: 800; color: white; display: block; }
+    .featured-meta { font-size: 0.9rem; color: #1db954; font-weight: 600; text-transform: uppercase; }
+    .btn-action { background: #1db954; color: black; font-weight: 800; font-size: 0.75rem; padding: 8px 15px; border-radius: 20px; }
+
+    /* B. DISCOGRAFÍA COMPLETA (Cuadrados a Color) */
+    .other-albums-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
+        gap: 25px;
+    }
+
+    .static-album {
+        text-align: center;
+        transition: transform 0.2s ease, filter 0.2s ease;
+        cursor: default;
+    }
+    
+    .static-album:hover { 
+        transform: scale(1.05); 
+        filter: brightness(1.2); 
+    }
+    
+    .static-cover {
+        width: 100%; aspect-ratio: 1/1; object-fit: cover; 
+        border-radius: 6px; margin-bottom: 10px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+    
+    .static-title { 
+        font-size: 0.85rem; color: #ccc; line-height: 1.2; font-weight: 600; 
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .static-album:hover .static-title { color: white; }
+</style>
+
+<div class="container artists-container">
+    <div class="text-center">
+        <h1 style="font-weight:900; font-size:3rem; margin-bottom: 10px;">SALÓN DE LA FAMA</h1>
+        
+        <!-- BUSCADOR DE ARTISTAS AÑADIDO -->
+        <div class="artist-search-box">
+            <input type="text" id="artistSearchInput" class="artist-input" placeholder="Buscar artista..." onkeyup="filterArtists()">
+        </div>
+    </div>
+
+    <div class="artists-grid" id="artistsGrid">
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('bad-bunny')" data-name="bad bunny">
+            <img src="/biblioteca-urbana/assets/artists/badbunny.jpg" alt="Bad Bunny" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Bad Bunny</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('dellafuente')" data-name="dellafuente">
+            <img src="/biblioteca-urbana/assets/artists/dellafuente.jpg" alt="Dellafuente" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Dellafuente</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('maluma')" data-name="maluma">
+            <img src="/biblioteca-urbana/assets/artists/maluma.jpg" alt="Maluma" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Maluma</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('myke-towers')" data-name="myke towers">
+            <img src="/biblioteca-urbana/assets/artists/myketowers.jpg" alt="Myke Towers" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Myke Towers</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('rauw-alejandro')" data-name="rauw alejandro">
+            <img src="/biblioteca-urbana/assets/artists/rauw.jpg" alt="Rauw Alejandro" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Rauw Alejandro</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('delaossa')" data-name="delaossa">
+            <img src="/biblioteca-urbana/assets/artists/delaossa.jpg" alt="Delaossa" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Delaossa</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('eladio-carrión')" data-name="eladio carrión">
+            <img src="/biblioteca-urbana/assets/artists/eladio.jpg" alt="Eladio Carrión" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Eladio Carrión</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('kaydy-cain')" data-name="kaydy cain">
+            <img src="/biblioteca-urbana/assets/artists/kaydycain.jpg" alt="Kaydy Cain" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Kaydy Cain</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('kidd-keo')" data-name="kidd keo">
+            <img src="/biblioteca-urbana/assets/artists/kiddkeo.jpg" alt="Kidd Keo" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Kidd Keo</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('melendi')" data-name="melendi">
+            <img src="/biblioteca-urbana/assets/artists/melendi.jpg" alt="Melendi" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Melendi</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('cruz-cafuné')" data-name="cruz cafuné">
+            <img src="/biblioteca-urbana/assets/artists/cruzcafune.jpg" alt="Cruz Cafuné" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Cruz Cafuné</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('rels-b')" data-name="rels b">
+            <img src="/biblioteca-urbana/assets/artists/relsb.jpg" alt="Rels b" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Rels b</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('mvrk')" data-name="mvrk">
+            <img src="/biblioteca-urbana/assets/artists/mvrk.jpg" alt="Mvrk" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Mvrk</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('mora')" data-name="mora">
+            <img src="/biblioteca-urbana/assets/artists/mora.jpg" alt="Mora" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Mora</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('duki')" data-name="duki">
+            <img src="/biblioteca-urbana/assets/artists/duki.jpg" alt="Duki" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Duki</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('young-cister')" data-name="young cister">
+            <img src="/biblioteca-urbana/assets/artists/youngcister.jpg" alt="Young Cister" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Young Cister</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('c-mari')" data-name="c mari">
+            <img src="/biblioteca-urbana/assets/artists/cmari.jpg" alt="C Mari" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>C Mari</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('trueno')" data-name="trueno">
+            <img src="/biblioteca-urbana/assets/artists/trueno.jpg" alt="Trueno" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Trueno</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('sen-senra')" data-name="sen senra">
+            <img src="/biblioteca-urbana/assets/artists/sensenra.jpg" alt="Sen Senra" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Sen Senra</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('l-haine')" data-name="l'haine">
+            <img src="/biblioteca-urbana/assets/artists/lhaine.jpg" alt="L'Haine" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>L'Haine</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('rosalía')" data-name="rosalía">
+            <img src="/biblioteca-urbana/assets/artists/rosalia.jpg" alt="Rosalía" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Rosalía</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('d-valentino')" data-name="d.valentino">
+            <img src="/biblioteca-urbana/assets/artists/valentino.jpg" alt="D.Valentino" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>D.Valentino</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('natalia-lacunza')" data-name="natalia lacunza">
+            <img src="/biblioteca-urbana/assets/artists/lacunza.jpg" alt="Natalia Lacunza" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Natalia Lacunza</h3></div>
+        </div>
+        
+        
+        <!-- Añadido data-name para la búsqueda -->
+        <div class="artist-card" onclick="openModal('joji')" data-name="joji">
+            <img src="/biblioteca-urbana/assets/artists/joji.jpg" alt="Joji" class="artist-photo" onerror="this.src='https://via.placeholder.com/400x600/111/333?text=Sin+Foto';">
+            <div class="artist-name-overlay"><h3>Joji</h3></div>
+        </div>
+        
+    </div>
+
+    <!-- Mensaje si no hay resultados -->
+    <div id="noResultsArtist" style="display:none; text-align:center; color:#666; margin-top:50px;">
+        <h3>No hemos encontrado a ese artista 😔</h3>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal-overlay" id="modal-bad-bunny" onclick="closeModal(event, 'bad-bunny')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('bad-bunny')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/badbunny.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Bad Bunny</h2>
+                <div class="modal-bio">Bad Bunny es el nombre artístico de Benito Antonio Martínez Ocasio, un cantante, compositor y productor musical puertorriqueño nacido en 1994. Se hizo famoso en 2016 con el lanzamiento de su canción "Diles" en SoundCloud, y es conocido por su fusión de géneros musicales como el trap latino, reguetón, rap y hip-hop, e incluso ha experimentado con rock, punk y salsa. Es un ícono de la música y la moda, conocido por romper récords, ser el primer artista hispanohablante en obtener la mayor cantidad de reproducciones en diversas plataformas y ganar múltiples premios.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item001.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item001.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Un verano sin ti</span>
+                        <span class="featured-meta">2022</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_x100pre.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">X 100PRE</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_yhlqmdlg.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">YHLQMDLG</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_eutdm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El Último Tour Del Mundo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_lnis.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Las Que No Iban A Salir</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_nspm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Nadie Sabe Lo Que Va A Pasar Mañana</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_oasis.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Oasis</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/bb_dtmf.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">DeBÍ TiRAR MáS FOToS</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-dellafuente" onclick="closeModal(event, 'dellafuente')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('dellafuente')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/dellafuente.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Dellafuente</h2>
+                <div class="modal-bio">Dellafuente es el nombre artístico de Pablo Enoc Bayo, un artista granadino nacido en 1992 que se caracteriza por fusionar música urbana con estilos tradicionales como el flamenco. Sus letras abordan temas sociales y la vida en el barrio, y ha alcanzado gran popularidad en la escena musical española, colaborando con otros artistas y creando un estilo propio.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item002.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item002.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Descanso en Poder</span>
+                        <span class="featured-meta">2020</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_adc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Azulejos de Corales</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_av.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Ansia Viva</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_r1.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Recopilatorio 1 (2013-2018)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_r2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Recopilatorio 2 (2013-2018)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_ep.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Ep.01-Causa</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_milagro.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Milagro</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_lpod.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Lágrimas pa otro día</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_incursion.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">INCURSION</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/df_torii.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Torii Yama</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-maluma" onclick="closeModal(event, 'maluma')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('maluma')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/maluma.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Maluma</h2>
+                <div class="modal-bio">Juan Luis Londoño Arias (Medellín, 28 de enero de 1994), conocido artísticamente como Maluma, es un cantante y compositor colombiano.Saltó a la fama en su país natal en 2011, gracias a los sencillos «Farandulera», «Obsesión», y «La temperatura»; y con «Carnaval» (2014), en el resto de América Latina.Su álbum debut Magia (2012) tuvo éxito comercial en Colombia,y un año después fue nominado al Grammy Latino como mejor artista nuevo.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item003.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item003.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Pretty Boy Dirty Boy</span>
+                        <span class="featured-meta">2015</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_magia.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Magia</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_pbdb.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PB.DB.The Mixtape</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_fame.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">F.A.M.E</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_11.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">11:11</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_pj.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PAPI JUANCHO</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_7dj.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">#7DJ(7 Días En Jamaica)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_mm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Marry Me(Original Motion Picture Soundtrack)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_tlst.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">The Love & Sex Tape</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_tlstd.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">The Love & Sex Tape Deluxe</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_dj.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Don Juan</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-myke-towers" onclick="closeModal(event, 'myke-towers')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('myke-towers')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/myketowers.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Myke Towers</h2>
+                <div class="modal-bio">Michael Anthony Torres Monge (San Juan, 15 de enero de 1994), conocido artísticamente como Myke Towers, es un cantante y compositor puertorriqueño de reguetón y trap.Fue nominado a un Grammy Latino, además de ser reconocido como el Nuevo Artista del Año por los Billboard Latin Music Awards en 2021.Hasta la fecha, Towers ha lanzado 8 álbumes de estudio y es codirigido por One World International y S10 Entertainment.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item004.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item004.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">ISLAND BOYZ</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_efdp.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El Final del Principio</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_emb.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Easy Money Baby</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LYKE MIKE</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lveu.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LA VIDA ES UNA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_vlt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LVEU:VIVE LA TUYA...NO LA MIA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lpn.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LA PANTERA NEGRA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lpnd.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LA PANTERA NEGRA(DELUXE)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lmii.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LYKE MIIKE</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mt_lmiid.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LYKE MIIKE(DELUXE)</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-rauw-alejandro" onclick="closeModal(event, 'rauw-alejandro')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('rauw-alejandro')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/rauw.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Rauw Alejandro</h2>
+                <div class="modal-bio">Rauw Alejandro es el nombre artístico de Raúl Alejandro Ocasio Ruiz, un cantante, compositor, bailarín y productor musical puertorriqueño nacido en 1993. Inició su carrera publicando canciones en 2014 y saltó a la fama internacional con éxitos como "Fantasías" y su álbum debut Afrodisíaco. Es reconocido por su versatilidad para fusionar el R&B latino con reguetón, pop y dancehall, e incluso ha experimentado con sonidos electrónicos y synth-pop en trabajos como Vice Versa y Saturno. Destaca por ser un artista completo que combina su música con grandes habilidades de baile, consolidándose como una de las figuras más innovadoras y exitosas de la nueva generación urbana.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item005.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item005.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">SATURNO</span>
+                        <span class="featured-meta">2017</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_tc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Trap Cake Vol.1</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_cv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Concierto Virtual en Tiempos de COVID-19</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_a.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Afrodisíaco</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_vv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">VICE VERSA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_tc2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">TRAP CAKE VOL.2</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_ps.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PLAYA SATURNO</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_cn.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Cosa Nuestra</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ra_cn0.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Cosa Nuestra:Caítulo 0</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-delaossa" onclick="closeModal(event, 'delaossa')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('delaossa')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/delaossa.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Delaossa</h2>
+                <div class="modal-bio">Daniel Martínez de la Ossa Romero, conocido artísticamente como Delaossa, es un rapero y compositor español nacido en Málaga en 1993. Criado en el barrio de El Palo, es cofundador del colectivo Space Hammu y se ha consolidado como una de las voces más auténticas del hip hop nacional. Su estilo combina el rap clásico y el boom bap con sonidos contemporáneos y letras introspectivas que reflejan sus raíces, destacando trabajos como su debut Un Perro Andaluz (2019) y su reciente álbum La Madrugá.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item006.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item006.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">La Madrugá</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/d_upa.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Un Perro Andaluz</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/d_pv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Playa Virginia</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-eladio-carrión" onclick="closeModal(event, 'eladio-carrión')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('eladio-carrión')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/eladio.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Eladio Carrión</h2>
+                <div class="modal-bio">Eladio Carrión es un rapero y cantante nacido en Estados Unidos con ascendencia puertorriqueña. Comenzó su carrera como comediante en redes sociales antes de dedicarse a la música. Es reconocido en la escena del trap latino por su voz grave, su gran habilidad lírica y su versatilidad para crear éxitos, consolidando su nombre con su aclamada serie de álbumes Sauce Boyz y Monarca.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item007.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item007.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Sauce Boyz 2</span>
+                        <span class="featured-meta">2021</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_sb.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sauce Boyz</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_sbcp.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sauce Boyz Care Package</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_monarca.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Monarca</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_skv1.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">SEN2 KBRN VOL.1</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_skv2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">SEN2 KBRN VOL.2</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_3k.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">3MEN2 KBRN</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_sm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sol María</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ec_dk.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">DON KBRN</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-kaydy-cain" onclick="closeModal(event, 'kaydy-cain')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('kaydy-cain')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/kaydycain.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Kaydy Cain</h2>
+                <div class="modal-bio">Daniel Gómez Carrero, conocido como Kaydy Cain, es una figura clave del trap en España. Originario de Carabanchel, fue uno de los miembros fundadores de grupos influyentes como Pxxr Gvng y La Mafia del Amor. Su estilo es una fusión única de trap, reguetón, salsa y bachata, con letras que combinan la vida de barrio y el romanticismo urbano.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item008.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item008.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Lo Mejor De Lo Peor</span>
+                        <span class="featured-meta">2019</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_3s.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">3 Sentimientos</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_li.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Life is</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_rf.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Rock & Fly</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_sr.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Swing(Remixes)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_mpv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Música Pa' Vacilar</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_tjm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">TRVP Jinxx (Mixtape)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_tnb.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Trap Nd Blues</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_esds.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El Swing de Siempre.Eterno Tumbao</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_mfn.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Money From Nothin'</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_endto.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El niño de Tus Ojos</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_fa.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Fallen Angel</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_ca.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Calle Amor</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_nba.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">NBA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_ejdtm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El Juguete de Tu Muñeca</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_bfk.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Baby Face Killa</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kc_dilf.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">DILF</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-kidd-keo" onclick="closeModal(event, 'kidd-keo')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('kidd-keo')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/kiddkeo.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Kidd Keo</h2>
+                <div class="modal-bio">Kidd Keo es el nombre artístico de Padua Keoma Salas Sánchez, un rapero y compositor español nacido en Alicante en 1995. Es considerado uno de los exponentes más reconocidos e internacionales del trap español. Su carrera despegó alrededor de 2014, distinguiéndose por su estilo bilingüe (español e inglés) y sus letras explícitas con referencias a la cultura underground. Keo se inspira en el sonido del trap de Atlanta y Canadá, y ha marcado tendencia con una estética visual y una actitud provocadora y sin censura, consolidando una base de fans global.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item009.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item009.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Keoland</span>
+                        <span class="featured-meta">2018</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kk_btr.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">BACK TO ROCKPORT</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kk_tt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Trippy & Trapper</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kk_bbtthm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Bando Boyz:The Trap House Mixtape</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kk_2016.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">2016</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/kk_bt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">BBZ TRASHTAPE</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-melendi" onclick="closeModal(event, 'melendi')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('melendi')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/melendi.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Melendi</h2>
+                <div class="modal-bio">Melendi es el nombre artístico de Ramón Melendi Espina, un cantautor español originario de Oviedo (1979). Marcó una época a principios de los 2000 fusionando la rumba con el pop y el rock con letras desenfadadas y provocadoras, alcanzando gran popularidad con su álbum debut Sin Noticias de Holanda. A lo largo de su extensa carrera, ha demostrado una notable evolución, transitando hacia un estilo pop-rock más melódico y maduro, lo que le ha permitido mantenerse como una de las figuras más vendidas y reconocidas de la música popular en España.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item010.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item010.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Lágrimas desordenadas</span>
+                        <span class="featured-meta">2012</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_qeces.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Que El Cielo Espere Sentao..</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_sndh.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sin Noticias De Holanda</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_mnct.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Mientras No Cueste Trabajo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_mncmt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Mientras No Cueste Más Trabajo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_cplv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Caminando Por La Vida</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_clcdtp.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Curiosa La Cara De Tu Padre</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_amclcdtp.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Aún Más Curiosa La Cara De Tu Padre</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_vae.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Volvamos a empezar</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_uam.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Un alumno más</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_das.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Directo a Septiembre</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_qlg.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Quítate las Gafas</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_ymvc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Yo me veo contigo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_ahora.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Ahora</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_102040.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">10:20:40</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_lyc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Likes y Cicatrices</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/m_asn.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">20 Años Sin Noticias</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-cruz-cafuné" onclick="closeModal(event, 'cruz-cafuné')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('cruz-cafuné')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/cruzcafune.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Cruz Cafuné</h2>
+                <div class="modal-bio">Carlos Bruñas Zamorín, conocido como Cruz Cafuné, es un cantante y rapero español originario de Tenerife, Islas Canarias (1993). Es uno de los líderes del colectivo 922 928 y una figura central en la escena urbana canaria. Su estilo se distingue por la mezcla de rap, R&B y sonidos isleños y caribeños, lo que le da una identidad musical única. Sus letras son conocidas por ser detalladas e introspectivas, abordando temas filosóficos y religiosos en trabajos como Moonlight922 y Visión Túnel.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item011.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item011.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Me muevo con dios</span>
+                        <span class="featured-meta">2023</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_pc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Pal Coche</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_mbmc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Maracucho Bueno Muere Chiquito</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_m922.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Moonlight922</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_vt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">VISIÓN TÚNEL</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_b.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">blu€s</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cc_bd.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">blu€s (d€lux€)</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-rels-b" onclick="closeModal(event, 'rels-b')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('rels-b')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/relsb.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Rels b</h2>
+                <div class="modal-bio">Daniel Heredia Vidal, conocido artísticamente como Rels B o Skinny Flakk, es un rapero, cantante y productor español originario de Mallorca (1993). Rels B se ha consolidado como una de las voces más destacadas del hip hop español gracias a su sonido suave y relajado, que fusiona hip hop, R&B y pop. Su carrera se distingue por el éxito masivo que logró como artista independiente, conectando con el público joven a nivel internacional con trabajos influyentes como Boys Don't Cry y La Isla LP.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item012.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item012.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Flakk Daniel's Lp</span>
+                        <span class="featured-meta">2018</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_ph.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Player Hater</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_bdc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Boys Don't Cry</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_ineditos.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Inéditos</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_hbf.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Happy Birthday Flakko</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_lil.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LA ISLA LP</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_sb.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">SMILE BIX:)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_a23.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">afroLOVA 23'</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_ans.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">a new star(1993)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/rb_a25.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">afroLOVA 25'</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-mvrk" onclick="closeModal(event, 'mvrk')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('mvrk')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/mvrk.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Mvrk</h2>
+                <div class="modal-bio">Mvrk es el nombre artístico de Marcos Cervera, un cantante español originario de Madrid y nacido en 2004. Es considerado una de las promesas más jóvenes y frescas de la escena urbana actual. Su sonido es una mezcla de trap, drill y pop alternativo con melodías muy pegadizas, lo que le ha permitido ganar reconocimiento rápidamente y consolidar una base de fans. Destaca por su álbum Pórtate Bien! y su estilo que representa a la nueva generación.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item013.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item013.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Portate Bien!</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mvrk_lfqmt.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">La fe que me tengas</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-mora" onclick="closeModal(event, 'mora')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('mora')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/mora.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Mora</h2>
+                <div class="modal-bio">Mora es el nombre artístico de Gabriel Armando Mora Quintero, un productor, compositor y artista puertorriqueño nacido en 1996. Inicialmente, su carrera se desarrolló detrás de escena, trabajando en la producción de éxitos para grandes artistas. A partir de 2018, se lanzó como solista, destacando por su estilo melódico único que fusiona el reguetón y el trap con atmósferas experimentales y sonidos electrónicos. Ha consolidado su éxito global con álbumes aclamados como Primer Día de Clases, Microdosis y Paraíso.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item014.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item014.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Paraíso</span>
+                        <span class="featured-meta">2022</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mora_pddc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Primer Dia de Clases</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mora_microdosis.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">MICRODOSIS</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mora_estrella.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">ESTRELLA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/mora_lmds.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">LO MISMO DE SIEMPRE</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-duki" onclick="closeModal(event, 'duki')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('duki')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/duki.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Duki</h2>
+                <div class="modal-bio">Mauro Ezequiel Lombardo, conocido como Duki, es el máximo referente del trap argentino, nacido en Buenos Aires en 1996. Su carrera despegó en las famosas batallas de freestyle de 'El Quinto Escalón', donde se convirtió en un ícono de la cultura juvenil. Lideró la explosión del género en Argentina, destacando por su estilo carismático, agresivo y energético. Ha consolidado su fama internacional con álbumes aclamados como Super Sangre Joven y Desde el Fin del Mundo.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item015.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item015.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Ameri</span>
+                        <span class="featured-meta">2024</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_ssj.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Súper Sangre Joven</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_24.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">24</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_defdm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Desde el Fin del Mundo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_vdefdm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Vivo Desde el Fin del Mundo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_tdr.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Temporada de Reggaetón</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_tdr2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Temporada de Reggaetón 2</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_ada.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Antes de Ameri</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/duki_5202.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">5202</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-young-cister" onclick="closeModal(event, 'young-cister')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('young-cister')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/youngcister.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Young Cister</h2>
+                <div class="modal-bio">Esteban Cisterna, conocido artísticamente como Young Cister, es un cantante y productor chileno originario de Santiago (1996). Es considerado una figura pionera en la explosión del trap y el reguetón en Chile. Su estilo se distingue por la versatilidad y la creación de melodías pegadizas, mezclando trap, R&B y sonidos urbanos con una estética moderna. Se ha consolidado como una de las voces más influyentes de su país, destacando por su marca personal Lo Más Xulo de tu Insta.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item016.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item016.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Planes de medianoche</span>
+                        <span class="featured-meta">2024</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/yc_96.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">96</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/yc_xtaciss.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Xtaciss</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/yc_equilibrio.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">EQILIBRIO</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/yc_l4fg.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Los 4F:El Origen</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-c-mari" onclick="closeModal(event, 'c-mari')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('c-mari')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/cmari.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">C Mari</h2>
+                <div class="modal-bio">C Marí es un artista valenciano de la nueva generación urbana española. Es conocido por su habilidad para crear sonidos pegadizos cercanos al reguetón melódico y el pop urbano. Con un estilo fresco que conecta directamente con la audiencia joven, se está posicionando como una de las voces emergentes a tener en cuenta en la escena nacional, con trabajos destacados como su álbum Sempre Cor.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item017.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item017.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Sempre Cor Deluxe</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/cmari_sc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sempre Cor</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-trueno" onclick="closeModal(event, 'trueno')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('trueno')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/trueno.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Trueno</h2>
+                <div class="modal-bio">Mateo Palacios Corazzina, conocido artísticamente como Trueno, es un rapero y compositor argentino originario del barrio de La Boca (2002). Proviene de una familia con fuertes raíces en el hip hop, siendo hijo del legendario MC Pedro Peligro. Trueno saltó a la fama como campeón de las batallas de freestyle (como FMS y Red Bull), antes de transicionar a la música de estudio. Su estilo fusiona el rap, el hip hop clásico y el rock argentino, manteniendo una fuerte identidad cultural en álbumes como Atrevido y Bien o Mal.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item018.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item018.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Atrevido</span>
+                        <span class="featured-meta">2020</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/t_aev.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">ATREVIDO EN VIVO</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/t_bom.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">BIEN O MAL</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/t_eub.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">EL ÚLTIMO BAILE</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/t_eubd.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">EL ÚLTIMO BAILE (DELUXE)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/t_rbs.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Trueno-Red Bull Symphonic</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-sen-senra" onclick="closeModal(event, 'sen-senra')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('sen-senra')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/sensenra.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Sen Senra</h2>
+                <div class="modal-bio">Christian Senra, conocido artísticamente como Sen Senra, es un músico y compositor español nacido en San Juan de Piñeiro, Pontevedra (1995). Su trayectoria musical es única, habiendo comenzado en el garage rock antes de evolucionar hacia un sonido mucho más refinado que mezcla el pop alternativo, el R&B sofisticado y el garage. Con un estilo íntimo, melódico y una estética visual muy cuidada, se ha convertido en el máximo referente del 'bedroom pop' en español. Ha alcanzado el éxito crítico y comercial con trabajos aclamados como Sensaciones y su proyecto PO2054AZ, consolidándose como uno de los artistas más originales y vanguardistas de la escena actual.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item019.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item019.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">PO2054AZ(Vol.II)</span>
+                        <span class="featured-meta">2024</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_pv.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Permanent Vacation</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_taofp.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">The Art of Self-Pressure</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_sensaciones.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sensaciones</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_cc.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Corazón Cromado</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_po1.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PO2054AZ(Vol.I)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/ss_po3.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PO2054AZ(Vol.III)</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-l-haine" onclick="closeModal(event, 'l-haine')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('l-haine')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/lhaine.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">L'Haine</h2>
+                <div class="modal-bio">Juan Sáenz de Cabezón, conocido artísticamente como L'Haine, es un artista y compositor español nacido en Logroño en 1999. Es considerado una de las voces más singulares y vanguardistas de la nueva ola urbana en España. Su estilo se aleja de los moldes tradicionales, creando atmósferas envolventes que fusionan el trap, el R&B melancólico y el drill melódico con una sensibilidad muy cuidada. Con una estética visual potente y letras que exploran lo emocional y lo crudo, ha destacado en la escena underground con proyectos como Patagonia y De la Carne, consolidándose como un artista de culto para la nueva generación.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item020.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item020.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Concreto</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/lh_an.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Autobús Noctambulo</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/lh_patagonia.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">PATAGONIA</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/lh_dlfeqyq.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">DE LA FORMA EN QUE YO QUIERO</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-rosalía" onclick="closeModal(event, 'rosalía')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('rosalía')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/rosalia.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Rosalía</h2>
+                <div class="modal-bio">Rosalía Vila Tobella, conocida artísticamente como Rosalía, es una cantante, compositora y productora española nacida en San Cugat del Vallés (1992). Es una de las artistas más influyentes y premiadas de la música actual, reconocida mundialmente por su capacidad para fusionar el flamenco tradicional con géneros modernos como el trap, el pop experimental y el reguetón. Saltó al estrellato global con su álbum conceptual El Mal Querer (2018) y consolidó su estatus de icono con Motomami (2022), un disco que rompió barreras sonoras y visuales. Con múltiples premios Grammy y Latin Grammy, Rosalía es una figura clave en la cultura popular contemporánea, destacando por su constante innovación, su estética vanguardista y su poderío vocal.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/r_la.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Los Ángeles</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/r_emq.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">El Mal Querer</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/r_motomami.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">MOTOMAMI</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/r_motomami2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">MOTOMAMI+</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-d-valentino" onclick="closeModal(event, 'd-valentino')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('d-valentino')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/valentino.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">D.Valentino</h2>
+                <div class="modal-bio">D.Valentino es un artista emergente de la escena urbana española que ha empezado a destacar por su frescura y su capacidad para navegar entre diferentes ritmos actuales. Su estilo se caracteriza por una mezcla de trap melódico y reguetón, con letras que suelen conectar con las vivencias de la juventud y la cultura de barrio. Se ha dado a conocer a través de plataformas digitales, donde su sonido moderno y su estética urbana le han permitido ir construyendo una base de seguidores fiel dentro de la nueva ola de talentos nacionales que están renovando el género.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item022.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item022.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Rosa&Rojo</span>
+                        <span class="featured-meta">2024</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/dv_sd.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sweet Dreamz</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/dv_lks.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Love Kills Slowly</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/dv_hk.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Hi-Kari</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/dv_sd2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Sweet Dreamz 2</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-natalia-lacunza" onclick="closeModal(event, 'natalia-lacunza')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('natalia-lacunza')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/lacunza.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Natalia Lacunza</h2>
+                <div class="modal-bio">Natalia Lacunza San José es una cantante y compositora española nacida en Pamplona (1999). Se dio a conocer al gran público en 2018, pero rápidamente logró distanciarse de las etiquetas comerciales para construir una carrera sólida y personal. Su estilo musical ha evolucionado desde el pop alternativo hacia sonidos cercanos al indie-pop, el R&B y el bedroom pop, destacando por su voz aterciopelada y sus letras cargadas de sensibilidad y honestidad. Con trabajos como su álbum debut Tiene que ser para mí (2022) y sus exitosas colaboraciones, Natalia se ha consolidado como una de las artistas más auténticas y respetadas de la nueva escena musical española, centrada en la calidad compositiva y una estética visual muy cuidada.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item023.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item023.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">N2STAL5IA</span>
+                        <span class="featured-meta">2025</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/nl_oa.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Otras Alas</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/nl_ep2.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">ep2</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/nl_tqspm.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">Tiene Que Ser Para Mí</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal-overlay" id="modal-joji" onclick="closeModal(event, 'joji')">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModalForce('joji')">&times;</span>
+        
+        <div class="profile-row">
+            <img src="/biblioteca-urbana/assets/artists/joji.jpg" class="profile-img">
+            <div class="profile-info">
+                <h2 class="modal-artist-name">Joji</h2>
+                <div class="modal-bio">George Kusunoki Miller, conocido artísticamente como Joji, es un cantante, compositor y productor japonés nacido en 1992. Tras dejar atrás su etapa como una personalidad viral en internet, Joji se reinventó por completo para convertirse en uno de los referentes más importantes del R&B alternativo y el lo-fi pop. Su música se caracteriza por una atmósfera melancólica, producciones minimalistas y letras que exploran el desamor y la soledad con una gran carga emocional. Con álbumes aclamados como Ballads 1, Nectar y Smithereens, y éxitos globales como "Glimpse of Us", ha logrado consolidarse como un artista de culto que domina las listas de éxitos internacionales gracias a su voz única y su estilo introspectivo.</div>
+            </div>
+        </div>
+        
+        <div class="albums-container">
+            
+            
+                <span class="section-label" style="color:#1db954;">Disponible en Biblioteca</span>
+                
+                <a href="/biblioteca-urbana/items/item024.html" class="album-row-card featured">
+                    <img src="/biblioteca-urbana/objects/item024.jpg" class="featured-cover">
+                    <div class="featured-info">
+                        <span class="featured-title">Nectar</span>
+                        <span class="featured-meta">2020</span>
+                    </div>
+                    <div class="btn-action">VER</div>
+                </a>
+                
+            
+
+            
+                <span class="section-label" style="margin-top: 30px;">Discografía Completa</span>
+                <div class="other-albums-grid">
+                    
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/joji_it.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">In Tongues(Deluxe)</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/joji_ballads.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">BALLADS 1</div>
+                        </div>
+                    
+                        
+                        
+                        
+                        
+                        <div class="static-album">
+                            <img src="/biblioteca-urbana/assets/artists/joji_smithereens.jpg" class="static-cover" onerror="this.src='https://via.placeholder.com/150/333/666?text=Cover';">
+                            <div class="static-title">SMITHEREENS</div>
+                        </div>
+                    
+                </div>
+            
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    // --- LÓGICA DE FILTRADO DE ARTISTAS ---
+    function filterArtists() {
+        // 1. Obtener texto del input
+        var input = document.getElementById('artistSearchInput');
+        var filter = input.value.toLowerCase();
+        
+        // 2. Obtener todas las tarjetas
+        var grid = document.getElementById('artistsGrid');
+        var cards = grid.getElementsByClassName('artist-card');
+        var visibleCount = 0;
+
+        // 3. Recorrer y ocultar/mostrar
+        for (var i = 0; i < cards.length; i++) {
+            var artistName = cards[i].getAttribute('data-name');
+            
+            // Verificamos si existe data-name, si no, lo ignoramos para evitar errores
+            if (artistName && artistName.includes(filter)) {
+                cards[i].classList.remove('hidden');
+                visibleCount++;
+            } else {
+                cards[i].classList.add('hidden');
+            }
+        }
+
+        // 4. Mostrar mensaje si no hay resultados
+        var noMsg = document.getElementById('noResultsArtist');
+        if (visibleCount === 0) {
+            noMsg.style.display = 'block';
+        } else {
+            noMsg.style.display = 'none';
+        }
+    }
+
+    // --- FUNCIONES DEL MODAL ---
+    function openModal(id) { document.getElementById('modal-' + id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal(event, id) { if (event.target === document.getElementById('modal-' + id)) { document.getElementById('modal-' + id).classList.remove('active'); document.body.style.overflow = 'auto'; } }
+    function closeModalForce(id) { document.getElementById('modal-' + id).classList.remove('active'); document.body.style.overflow = 'auto'; }
+</script>
+    </main>
+    <footer class="bg-dark pt-4 mt-auto container-fluid">
+
+    <div class="row border-bottom border-white pb-4 mb-2">
+
+        <div class="col-md-7 px-4 mt-3">
+
+            <h2 class="h4"><a href="/biblioteca-urbana/" class="text-white">Biblioteca Urbana</a></h2>
+            <p class="text-white"><small>Colección digital de álbumes.</small></p>
+            <nav>
+                <ul id="footer-nav" class="nav nav-pills ">
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/browse.html">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light active" href="/biblioteca-urbana/artistas.html">Artistas</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/timeline.html">Línea temporal</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/ranking.html">Ranking</a>
+                    </li>
+                    <li class="nav-item">
+                    
+                        <a class="nav-link text-light" href="/biblioteca-urbana/about.html">Información</a>
+                    </li></ul>
+            </nav>
+
+        </div>
+
+        <div class="col-md-5 mt-3 text-center">
+
+           
+            <p class="text-white text-md-end" id="footer-credits">
+                <small><em>built with</em>
+                    <a href="https://collectionbuilder.github.io/" title="CollectionBuilder">
+                        <img src="/biblioteca-urbana/assets/img/collectionbuilder-logo.png" class="img-fluid" alt="CollectionBuilder" >
+                    </a>
+                </small>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center pt-3 pb-1">
+        <p class="text-white">Last updated 2026</p>
+    </div>
+
+</footer>
+    <!-- Bootstrap bundle JS -->
+<script src="/biblioteca-urbana/assets/lib/bootstrap.bundle.min.js"></script>
+<!-- load other js -->
+<script src="/biblioteca-urbana/assets/lib/lazysizes.min.js" async></script>
+
+
+    <script>
+    // When the user scrolls down from the top of the document, show the button
+    window.onscroll = function () {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
+    }
+</script>
+<a href="#maincontent" id="scroll-to-top" class="btn btn-link" title="Back to Top">
+    <span class="visually-hidden">Back to top</span>
+    <svg class="bi icon-sprite" role="img" aria-label="Up Arrow">
+        <use xlink:href="/biblioteca-urbana/assets/lib/cb-icons.svg#icon-back-to-top"/>
+    </svg>
+</a>
+  </body>
+</html>
